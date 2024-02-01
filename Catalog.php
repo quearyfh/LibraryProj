@@ -12,24 +12,24 @@
 
 <body class ="text-bg-light">
     <div class="well bg-dark text-white text-center" >Open from 8am - 5pm at 12345 Example St. IN</div>
-    <div class = "row row-eq-height">
-        <div class="col-lg-1 text-center">
-                <h2>This is A</h2>
-        </div>
-        <div class="col-lg-3 text-left">
-                <h1>Library</h1>
-        </div>
-        <div class="col-lg-3 ms-auto text-end">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav">
+        <div class = "row row-eq-height">
+            <div class="col-lg-1 text-center">
+                    <h2>This is A</h2>
+            </div>
+            <div class="col-lg-3 text-left text-success">
+                    <h1>Library</h1>
+            </div>
+            <div class="col-lg-3 ms-auto text-end">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="#">PERSON NAME</a></li>
                         <li class="nav-item"><a class="nav-link" href="FQ_SS_FP.html">Log Out</a></li>
-                </ul>
+                    </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
         </div>
     </div>
     <div class="well bg-dark " > .   </div>
@@ -47,7 +47,7 @@
             <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="#">Check Out</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="#S">Return Books</a></button>
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="">Return Books</a></button>
         </div>
         <div class="col-sm-2"></div>
     </div>
@@ -56,47 +56,36 @@
     <div class= "container-fluid content-row">
 
         <div class = "row row-eq-height">
-        <div class="col-lg-6 vh-100">
+        <div class="col-lg-4 vh-100">
             <div class="card">
                 <div class="card-header bg-success">
-                    <h5 class="card-title text-center">Newly Added</h5>
+                    <h5 class="card-title text-center"> Genres</h5>
                 </div>
-                <div class="card-body">
-                    <div class = "row row-eq-height">
-                            <div class="col-md-4 vh-25">
-                                <img src="..." class="card-img-top" alt="...">
-                            </div>
-                            <div class="col-md-4 vh-25">
-                                <img src="..." class="card-img-top" alt="...">
-                            </div>
-                            <div class="col-md-4 vh-25">
-                                <img src="..." class="card-img-top" alt="...">
-                            </div>
-                        </div>
-                    </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Business</a></li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Cooking</a></li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Fantasy</a> </li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Sci-Fi</a></li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Horror</a> </li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Mystery & Thriller </a></li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Nature</a></li>
+                </ul>
             </div>
         </div>
 
-        <div class="col-lg-6 vh-100">
+        <div class="col-lg-8 vh-100">
             <div class="card">
                 <div class="card-header bg-success">
-                    <h5 class="card-title text-center">Recently Returned</h5>
+                    <h5 class="card-title text-center">Results Found</h5>
                 </div>
                 <div class="card-body">
-                    <div class = "row row-eq-height">
-                        <div class="col-md-4 vh-25">
-                            <img src="..." class="card-img-top" alt="...">
-                        </div>
-                        <div class="col-md-4 vh-25">
-                            <img src="..." class="card-img-top" alt="...">
-                        </div>
-                        <div class="col-md-4 vh-25">
-                            <img src="..." class="card-img-top" alt="...">
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-        </div>
     </div>
+
+
+    
+
+
 </body>

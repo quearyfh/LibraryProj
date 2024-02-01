@@ -10,8 +10,9 @@
     <?php session_start(); require('Connection.php');?>
 </head>
 
+
 <body class ="text-bg-light">
-    <div class="well bg-dark text-white text-center" >Open from 8am - 5pm at 12345 Example St. IN</div>
+    <div class="well bg-dark text-white text-center" >ADMIN ACCESS</div>
     <div class = "row row-eq-height">
         <div class="col-lg-1 text-center">
                 <h2>This is A</h2>
@@ -19,26 +20,33 @@
         <div class="col-lg-3 text-left">
                 <h1>Library</h1>
         </div>
-        <div class="col-lg-3 ms-auto text-end">
+        <div class="col-lg-4 ms-auto text-end">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="#">PERSON NAME</a></li>
-                        <li class="nav-item"><a class="nav-link" href="FQ_SS_FP.html">Log Out</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">PERSON NAME</a></li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="AdminBook.php">Book Access</a></li>
+                        <li><a class="dropdown-item" href="AdminUsers.php">User Access</a></li>
+                    </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="FQ_SS_FP.html">Log Out</a></li>
                 </ul>
                 </div>
             </div>
         </nav>
-        </div>
     </div>
+    
     <div class="well bg-dark " > .   </div>
     <div class="vr"></div>
     <div class="row">
         <div class="col-sm-2"></div>
 
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="Home.php">Home</a></button>
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="AdminHome.php">Home</a></button>
         </div>
         <div class="col-sm-2">
             <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="Catalog.php">Catalog</a></button>
@@ -47,7 +55,7 @@
             <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="#">Check Out</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="#S">Return Books</a></button>
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="#">Return Books</a></button>
         </div>
         <div class="col-sm-2"></div>
     </div>
