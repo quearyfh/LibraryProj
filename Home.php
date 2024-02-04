@@ -64,14 +64,25 @@
                 <div class="card-body">
                     <div class = "row row-eq-height">
                             <div class="col-md-4 vh-25">
-                                <img src="..." class="card-img-top" alt="...">
-                            </div>
-                            <div class="col-md-4 vh-25">
-                                <img src="..." class="card-img-top" alt="...">
-                            </div>
-                            <div class="col-md-4 vh-25">
-                                <img src="..." class="card-img-top" alt="...">
-                            </div>
+                            <?php
+                                $sql = "select * from book order by DateAdded desc";
+                                $ctr=0;
+                                $result = mysqli_query($conn, $sql);
+                                if (mysqli_num_rows($result) > 0) {
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        if ($ctr<3){
+                                            $pic = $row["img"];
+                                            echo "<img src=\".\bookpic\\" .$row["img"] ."\" class=\"card-img-top\" alt=\"BookImage\">";
+                                            echo "</div>";
+                                            echo "<div class=\"col-md-4 vh-25\">";
+                                            $ctr++;
+                                        }
+                                        else{
+                                            echo "</div>";
+                                        }
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
             </div>
@@ -85,15 +96,25 @@
                 <div class="card-body">
                     <div class = "row row-eq-height">
                         <div class="col-md-4 vh-25">
-                            <img src="..." class="card-img-top" alt="...">
-                        </div>
-                        <div class="col-md-4 vh-25">
-                            <img src="..." class="card-img-top" alt="...">
-                        </div>
-                        <div class="col-md-4 vh-25">
-                            <img src="..." class="card-img-top" alt="...">
-                        </div>
-                    </div>
+                        <?php
+                                $sql = "select * from book order by DateAdded desc";
+                                $ctr=0;
+                                $result = mysqli_query($conn, $sql);
+                                if (mysqli_num_rows($result) > 0) {
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        if ($ctr<3){
+                                            $pic = $row["img"];
+                                            echo "<img src=\".\bookpic\\" .$row["img"] ."\" class=\"card-img-top\" alt=\"BookImage\">";
+                                            echo "</div>";
+                                            echo "<div class=\"col-md-4 vh-25\">";
+                                            $ctr++;
+                                        }
+                                        else{
+                                            echo "</div>";
+                                        }
+                                    }
+                                }
+                            ?>
                 </div>
             </div>
         </div>

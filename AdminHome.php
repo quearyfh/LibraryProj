@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Library Home </title>
+    <title>Library Admin Home </title>
     <?php session_start(); require('Connection.php');?>
 </head>
 
@@ -72,14 +72,25 @@
                 <div class="card-body">
                     <div class = "row row-eq-height">
                             <div class="col-md-4 vh-25">
-                                <img src="..." class="card-img-top" alt="...">
-                            </div>
-                            <div class="col-md-4 vh-25">
-                                <img src="..." class="card-img-top" alt="...">
-                            </div>
-                            <div class="col-md-4 vh-25">
-                                <img src="..." class="card-img-top" alt="...">
-                            </div>
+                            <?php
+                                $sql = "select * from book order by DateAdded desc";
+                                $ctr=0;
+                                $result = mysqli_query($conn, $sql);
+                                if (mysqli_num_rows($result) > 0) {
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        if ($ctr<3){
+                                            $pic = $row["img"];
+                                            echo "<img src=\".\bookpic\\" .$row["img"] ."\" class=\"card-img-top\" alt=\"BookImage\">";
+                                            echo "</div>";
+                                            echo "<div class=\"col-md-4 vh-25\">";
+                                            $ctr++;
+                                        }
+                                        else{
+                                            echo "</div>";
+                                        }
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
             </div>
@@ -93,14 +104,26 @@
                 <div class="card-body">
                     <div class = "row row-eq-height">
                         <div class="col-md-4 vh-25">
-                            <img src="..." class="card-img-top" alt="...">
-                        </div>
-                        <div class="col-md-4 vh-25">
-                            <img src="..." class="card-img-top" alt="...">
-                        </div>
-                        <div class="col-md-4 vh-25">
-                            <img src="..." class="card-img-top" alt="...">
-                        </div>
+                        <?php
+                                //FIX FOR RESERVED
+                                $sql = "select * from book order by DateAdded desc";
+                                $ctr=0;
+                                $result = mysqli_query($conn, $sql);
+                                if (mysqli_num_rows($result) > 0) {
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        if ($ctr<3){
+                                            $pic = $row["img"];
+                                            echo "<img src=\".\bookpic\\" .$row["img"] ."\" class=\"card-img-top\" alt=\"BookImage\">";
+                                            echo "</div>";
+                                            echo "<div class=\"col-md-4 vh-25\">";
+                                            $ctr++;
+                                        }
+                                        else{
+                                            echo "</div>";
+                                        }
+                                    }
+                                }
+                            ?>
                     </div>
                 </div>
             </div>
