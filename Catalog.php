@@ -24,8 +24,14 @@
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="#">PERSON NAME</a></li>
-                        <li class="nav-item"><a class="nav-link" href="FQ_SS_FP.html">Log Out</a></li>
+                        <?php
+                            $ucard = $_SESSION["ucard"];
+                            $sql = "select * from member where ucard = '$ucard'"; 
+                            $result = mysqli_query($conn, $sql);
+                            $row = mysqli_fetch_assoc($result);
+                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
+                        ?>
+                        <li class="nav-item"><a class="nav-link" href="Login.php">Log Out</a></li>
                     </ul>
                     </div>
                 </div>
@@ -59,16 +65,16 @@
         <div class="col-lg-4 vh-100">
             <div class="card">
                 <div class="card-header bg-success">
-                    <h5 class="card-title text-center"> Genres</h5>
+                    <h5 class="card-title text-center"> <a class="nav-link" href="Catalog.php">Genres</a></h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Business</a></li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Cooking</a></li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Fantasy</a> </li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Sci-Fi</a></li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Horror</a> </li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Mystery & Thriller </a></li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Nature</a></li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="Catalog.php?Genre=Business">Business</a></li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="Catalog.php?Genre=Cooking">Cooking</a></li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="Catalog.php?Genre=Fantasy">Fantasy</a> </li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="Catalog.php?Genre=Sci-Fi">Sci-Fi</a></li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="Catalog.php?Genre=Horror">Horror</a> </li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="Catalog.php?Genre=Mystery&Thriller">Mystery & Thriller </a></li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="Catalog.php?Genre=Nature">Nature</a></li>
                 </ul>
             </div>
         </div>
@@ -80,31 +86,37 @@
                 </div>
                 <div class="card-body">
                 <?php
-                                $sql = "select * from book";
-                                $result = mysqli_query($conn, $sql);
-                                if (mysqli_num_rows($result) > 0) {
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        echo "<div class=\"card mb-3\" style=\"max-width: 540px;\">";
-                                            echo "<div class=\"row g-0\">";
-                                                echo "<div class=\"col-md-4\">
-                                                <img src=\".\bookpic\\" .$row["img"] ."\" class=\"card-img-top\" alt=\"BookImage\">
-                                                </div>
-                                                <div class=\"col-md-8\">
-                                                <div class=\"card-body\">
-                                                    <h5 class=\"card-title\">" .$row["title"] ."</h5>
-                                                    <p class=\"card-text\"><b>Author: </b>"  .$row["author"] .".</p>
-                                                    <p class=\"card-text\"><b>ISBN: </b>"  .$row["ISBN"] .".</p>
-                                                    <p class=\"card-text\"><b>Copies: </b>"  .$row["copies"] .".</p>
-                                                    <p class=\"card-text\"><b>Genre: </b>"  .$row["genre"] .".</p>
-                                                    <button type=\"button\" class=\"btn btn-sm btn-success\">Check Out</button>
-                                                </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                            ";
-                                    }
-                                }
-                            ?>
+                if (!empty($_GET)) {
+                    $Genre = $_GET['Genre'];
+                    $sql = "select * from book where genre='$Genre'";
+                }
+                else{
+                    $sql = "select * from book";
+                 }                
+                 $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<div class=\"card mb-3\" style=\"max-width: 540px;\">";
+                        echo "<div class=\"row g-0\">";
+                        echo "<div class=\"col-md-4\">
+                        <img src=\".\bookpic\\" .$row["img"] ."\" class=\"card-img-top\" alt=\"BookImage\">
+                        </div>
+                        <div class=\"col-md-8\">
+                        <div class=\"card-body\">
+                            <h5 class=\"card-title\">" .$row["title"] ."</h5>
+                            <p class=\"card-text\"><b>Author: </b>"  .$row["author"] .".</p>
+                            <p class=\"card-text\"><b>ISBN: </b>"  .$row["ISBN"] .".</p>
+                            <p class=\"card-text\"><b>Copies: </b>"  .$row["copies"] .".</p>
+                            <p class=\"card-text\"><b>Genre: </b>"  .$row["genre"] .".</p>
+                            <button type=\"button\" class=\"btn btn-sm btn-success\">Check Out</button>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        ";
+                    }
+                }
+                ?>
                 </div>
             </div>
         </div>

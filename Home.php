@@ -24,8 +24,14 @@
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="#">PERSON NAME</a></li>
-                        <li class="nav-item"><a class="nav-link" href="FQ_SS_FP.html">Log Out</a></li>
+                    <?php
+                        $ucard = $_SESSION["ucard"];
+                        $sql = "select * from member where ucard = '$ucard'"; 
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_assoc($result);
+                        echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
+                    ?>
+                        <li class="nav-item"><a class="nav-link" href="Login.php">Log Out</a></li>
                 </ul>
                 </div>
             </div>
@@ -97,7 +103,7 @@
                     <div class = "row row-eq-height">
                         <div class="col-md-4 vh-25">
                         <?php
-                                $sql = "select * from book order by DateAdded desc";
+                                $sql = "select * from reserve order by dateReturned desc";
                                 $ctr=0;
                                 $result = mysqli_query($conn, $sql);
                                 if (mysqli_num_rows($result) > 0) {

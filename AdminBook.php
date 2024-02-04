@@ -24,15 +24,21 @@
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#">PERSON NAME</a></li>
+                    <?php
+                        $ucard = $_SESSION["ucard"];
+                        $sql = "select * from member where ucard = '$ucard'"; 
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_assoc($result);
+                        echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
+                    ?>
                     <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Admin Pages</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="AdminBook.php">Book Access</a></li>
                         <li><a class="dropdown-item" href="AdminUsers.php">User Access</a></li>
                     </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="FQ_SS_FP.html">Log Out</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Login.php">Log Out</a></li>
                 </ul>
                 </div>
             </div>
@@ -68,7 +74,7 @@
                     <h5 class="card-title text-center"> Genres</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Add Book</a></li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="AddBook.php">Add Book</a></li>
                     <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Remove Book</a></li>
                     <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Edit Book</a> </li>
                 </ul>

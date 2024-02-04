@@ -34,19 +34,31 @@
                 <div class="card-header bg-success">
                     <h5 class="card-title text-center">Login</h5>
                 </div>
-                <div class="card-body text-center">
-                    <form name ="SubmitUser" method= "post" action= "CheckUser.php">
-                        <p>Ucard Number:<br>
-                        <input type="number" name="ucard">
+                <div class="card-body text-center">  
+                    <form name ="CreateUser" method= "post" action= "createUser.php">
+                        <p>First name:<br>
+                        <input type="text" name="fname">
                         </p>
 
-                        <p>Last Four Digits of Phone Number:<br>
+                        <p>Last name:<br>
+                        <input type="text" name="lname">
+                        </p>
+
+                        <p>Email:<br>
+                        <input type="text" name="email">
+                        </p>
+
+                        <p>Phone Number:<br>
                         <input type="number" name="phone">
                         </p>
-                        
-                        <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Login</button>
+
+                        <p>Address:<br>
+                        <input type="text" name="address">
+                        </p>
+
+                        <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Sign Up</button>
                         <br>
-                        <p>Don't have an account?<a class="nav-link" href="SignUp.php">Click Here to Sign Up</a></p>
+                        <p>Already have an account?<a class="nav-link" href="Login.php">Click Here to Login</a></p>
                     </form>
                 </div>
             </div>

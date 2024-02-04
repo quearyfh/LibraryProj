@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Library Admin Users </title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>    
+    <title>Library Admin Books </title>
     <?php session_start(); require('Connection.php');?>
 </head>
 
@@ -32,7 +32,7 @@
                         echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
                     ?>
                     <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Admin Pages</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="AdminBook.php">Book Access</a></li>
                         <li><a class="dropdown-item" href="AdminUsers.php">User Access</a></li>
@@ -74,9 +74,9 @@
                     <h5 class="card-title text-center"> Genres</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Add User</a></li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Remove User</a></li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Edit User</a> </li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Add Book</a></li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Remove Book</a></li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Edit Book</a> </li>
                 </ul>
             </div>
         </div>
@@ -85,31 +85,33 @@
             <div class="card">
                 <div class="card-header bg-success">
                     <h5 class="card-title text-center">Results Found</h5>
+                </div>  
+                    <div class="card-body text-center">  
+                        <form name ="CreateUser" method= "post" action= "createUser.php">
+                            <p>Title:<br>
+                            <input type="text" name="title">
+                            </p>
+
+                            <p>Author:<br>
+                            <input type="text" name="author">
+                            </p>
+
+                            <p>ISBN:<br>
+                            <input type="number" name="ISBN">
+                            </p>
+
+                            <p>Copies:<br>
+                            <input type="number" name="Copies">
+                            </p>
+
+                            <p>Genre:<br>
+                            <input type="text" name="Genre">
+                            </p>
+
+                            <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Submit Book</button>
+                            <br>
+                        </form>
                 </div>
-                <div class="card-body">
-                <?php
-                                $sql = "select * from member";
-                                $result = mysqli_query($conn, $sql);
-                                if (mysqli_num_rows($result) > 0) {
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        echo "<div class=\"card mb-3\" style=\"max-width: 540px;\">";
-                                            echo "<div class=\"row g-0\">";
-                                                echo "
-                                                <div class=\"card-body\">
-                                                    <h5 class=\"card-title\">" .$row["fname"] ." " .$row["lname"] ."</h5>
-                                                    <p class=\"card-text\"><b>Ucard Number: </b>"  .$row["Ucard"] ."</p>
-                                                    <p class=\"card-text\"><b>Email: </b>"  .$row["email"] ."</p>
-                                                    <p class=\"card-text\"><b>Phone Number: </b>"  .$row["Phone"] ."</p>
-                                                    <p class=\"card-text\"><b>Address: </b>"  .$row["address"] ."</p>
-                                                    <p class=\"card-text\"><b>Admin Status: </b>"  .$row["status"] ."</p>
-                                                    <button type=\"button\" class=\"btn btn-sm btn-success\">Edit</button>
-                                                    <button type=\"button\" class=\"btn btn-sm btn-success\">Remove</button>
-                                            </div>
-                                            </div>
-                                            ";
-                                    }
-                                }
-                            ?>
                 </div>
             </div>
         </div>
