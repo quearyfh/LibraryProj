@@ -76,7 +76,7 @@
                     <h5 class="card-title text-center"> Genres</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-center "> <a class="nav-link" href="AddUser.php">Add User</a></li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="AddUser.html">Add User</a></li>
                     <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Remove User</a></li>
                     <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Edit User</a> </li>
                 </ul>
@@ -89,30 +89,29 @@
                     <h5 class="card-title text-center">Results Found</h5>
                 </div>
                 <div class="card-body">
-                <?php
-                                $sql = "select * from member";
-                                $result = mysqli_query($conn, $sql);
-                                if (mysqli_num_rows($result) > 0) {
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        $ucard=$row["Ucard"] ;
-                                        echo "<div class=\"card mb-3\" style=\"max-width: 540px;\">";
-                                            echo "<div class=\"row g-0\">";
-                                                echo "
-                                                <div class=\"card-body\">
-                                                    <h5 class=\"card-title\">" .$row["fname"] ." " .$row["lname"] ."</h5>
-                                                    <p class=\"card-text\"><b>Ucard Number: </b>"  .$row["Ucard"] ."</p>
-                                                    <p class=\"card-text\"><b>Email: </b>"  .$row["email"] ."</p>
-                                                    <p class=\"card-text\"><b>Phone Number: </b>"  .$row["Phone"] ."</p>
-                                                    <p class=\"card-text\"><b>Address: </b>"  .$row["address"] ."</p>
-                                                    <p class=\"card-text\"><b>Admin Status: </b>"  .$row["status"] ."</p>
-                                                    <button type=\"button\" class=\"btn btn-sm btn-success\">Edit</button>
-                                                    <button type=\"button\" class=\"btn btn-sm btn-success\"><a class=\"nav-link\" href=\"DeleteUser.php?ucard=$ucard\">Remove</a></button>
-                                            </div>
-                                            </div>
-                                            ";
-                                    }
-                                }
-                            ?>
+                <form name ="CreateUser" method= "post" action= "createUser.php">
+                        <p>First name:<br>
+                        <input type="text" name="fname">
+                        </p>
+
+                        <p>Last name:<br>
+                        <input type="text" name="lname">
+                        </p>
+
+                        <p>Email:<br>
+                        <input type="text" name="email">
+                        </p>
+
+                        <p>Phone Number:<br>
+                        <input type="number" name="phone">
+                        </p>
+
+                        <p>Address:<br>
+                        <input type="text" name="address">
+                        </p>
+
+                        <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Add User</button>
+                        <br>
                 </div>
             </div>
         </div>

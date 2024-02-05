@@ -10,9 +10,11 @@
         $row = mysqli_fetch_assoc($result);
         $_SESSION["ucard"] = $ucard;
         if($row["status"] != 'User'){
+            $_SESSION["status"] = 'admin';
             header("refresh:0.2; url=AdminHome.php");
         }
         else{
+            $_SESSION["status"] = 'member';
             header("refresh:0.2; url=Home.php");
         }  
     }

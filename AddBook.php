@@ -16,7 +16,7 @@
         <div class="col-lg-1 text-center">
                 <h2>This is A</h2>
         </div>
-        <div class="col-lg-3 text-left">
+        <div class="col-lg-3 text-left text-success">
                 <h1>Library</h1>
         </div>
         <div class="col-lg-4 ms-auto text-end">

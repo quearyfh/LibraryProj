@@ -24,13 +24,22 @@
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul class="navbar-nav">
-                        <?php
-                            $ucard = $_SESSION["ucard"];
-                            $sql = "select * from member where ucard = '$ucard'"; 
-                            $result = mysqli_query($conn, $sql);
-                            $row = mysqli_fetch_assoc($result);
-                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
-                        ?>
+                    <?php
+                        $ucard = $_SESSION["ucard"];
+                        $sql = "select * from member where ucard = '$ucard'"; 
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_assoc($result);
+                        echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
+                        if($_SESSION["status"] == 'admin'){
+                           echo "<li class=\"nav-item dropdown\">
+                           <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>
+                           <ul class=\"dropdown-menu\">
+                               <li><a class=\"dropdown-item\" href=\"AdminBook.php\">Book Access</a></li>
+                               <li><a class=\"dropdown-item\" href=\"AdminUsers.php\">User Access</a></li>
+                           </ul>
+                           </li> " ;
+                        }
+                    ?>
                         <li class="nav-item"><a class="nav-link" href="Login.php">Log Out</a></li>
                     </ul>
                     </div>

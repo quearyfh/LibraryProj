@@ -16,7 +16,7 @@
         <div class="col-lg-1 text-center">
                 <h2>This is A</h2>
         </div>
-        <div class="col-lg-3 text-left">
+        <div class="col-lg-3 text-left text-success">
                 <h1>Library</h1>
         </div>
         <div class="col-lg-3 ms-auto text-end">
@@ -24,12 +24,21 @@
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
-                    <?php
+                <?php
                         $ucard = $_SESSION["ucard"];
                         $sql = "select * from member where ucard = '$ucard'"; 
                         $result = mysqli_query($conn, $sql);
                         $row = mysqli_fetch_assoc($result);
                         echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
+                        if($_SESSION["status"] == 'admin'){
+                           echo "<li class=\"nav-item dropdown\">
+                           <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>
+                           <ul class=\"dropdown-menu\">
+                               <li><a class=\"dropdown-item\" href=\"AdminBook.php\">Book Access</a></li>
+                               <li><a class=\"dropdown-item\" href=\"AdminUsers.php\">User Access</a></li>
+                           </ul>
+                           </li> " ;
+                        }
                     ?>
                         <li class="nav-item"><a class="nav-link" href="Login.php">Log Out</a></li>
                 </ul>
