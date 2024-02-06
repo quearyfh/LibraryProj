@@ -46,11 +46,28 @@
     <!-- <div class="well bg-light " > .   </div> -->
     <div class="vr"></div> 
 
+
+<div class="well bg-dark " >" "</div>
+
 <div class="row">
+    <div class="col-2"></div>
+    <div class="col-2"> 
+        <p class="text-end lh-2 fs-4">BOOK PLACEHOLDER. <br> BOOK PLACEHOLDER. <br> BOOK PLACEHOLDER. <br> BOOK PLACEHOLDER. <br> BOOK PLACEHOLDER. <br> BOOK PLACEHOLDER. </p>
+    </div>
+    <div class="col-6"> 
+        <p class="text lh-3 fs-3"> Title: <br> Author: <br> ISBN/ISBN13 <br> Date Checked Out: <br> Date to Return by: </p> 
+    </div>
+    <div class="col"></div>
 <hr>
-<div class="well bg-dark " > .   </div>
-
-    
-
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-2"> 
+        <p class="text-end lh-2 fs-4">BOOK PLACEHOLDER. <br> BOOK PLACEHOLDER. <br> BOOK PLACEHOLDER. <br> BOOK PLACEHOLDER. <br> BOOK PLACEHOLDER. <br> BOOK PLACEHOLDER. </p>
+    </div>
+    <div class="col-6"> 
+        <p class="text lh-3 fs-3"> Title: <br> Author: <br> ISBN/ISBN13 <br> Date Checked Out: <br> Date to Return by: </p> 
+    </div>
+    <div class="col"></div>
+<hr>
 
 </body>
