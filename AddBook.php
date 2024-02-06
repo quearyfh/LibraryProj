@@ -24,20 +24,22 @@
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
-                    <?php
+                <?php
                         $ucard = $_SESSION["ucard"];
                         $sql = "select * from member where ucard = '$ucard'"; 
                         $result = mysqli_query($conn, $sql);
                         $row = mysqli_fetch_assoc($result);
                         echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
+                        if($_SESSION["status"] == 'admin'){
+                           echo "<li class=\"nav-item dropdown\">
+                           <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>
+                           <ul class=\"dropdown-menu\">
+                               <li><a class=\"dropdown-item\" href=\"AdminBook.php\">Book Access</a></li>
+                               <li><a class=\"dropdown-item\" href=\"AdminUsers.php\">User Access</a></li>
+                           </ul>
+                           </li> " ;
+                        }
                     ?>
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="AdminBook.php">Book Access</a></li>
-                        <li><a class="dropdown-item" href="AdminUsers.php">User Access</a></li>
-                    </ul>
-                    </li>
                     <li class="nav-item"><a class="nav-link" href="Login.php">Log Out</a></li>
                 </ul>
                 </div>
@@ -50,7 +52,7 @@
         <div class="col-sm-2"></div>
 
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="AdminHome.php">Home</a></button>
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="Home.php">Home</a></button>
         </div>
         <div class="col-sm-2">
             <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="Catalog.php">Catalog</a></button>
@@ -71,12 +73,11 @@
         <div class="col-lg-4 vh-100">
             <div class="card">
                 <div class="card-header bg-success">
-                    <h5 class="card-title text-center"> Genres</h5>
+                    <h5 class="card-title text-center">Options</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Add Book</a></li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Remove Book</a></li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Edit Book</a> </li>
+                <li class="list-group-item text-center "> <a class="nav-link" href="AdminBook.php">View Books</a> </li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="AddBook.php">Add Book</a></li>
                 </ul>
             </div>
         </div>
@@ -87,7 +88,7 @@
                     <h5 class="card-title text-center">Results Found</h5>
                 </div>  
                     <div class="card-body text-center">  
-                        <form name ="CreateUser" method= "post" action= "createUser.php">
+                        <form name ="CreateBook" method= "post" action= "createBook.php">
                             <p>Title:<br>
                             <input type="text" name="title">
                             </p>
@@ -101,12 +102,20 @@
                             </p>
 
                             <p>Copies:<br>
-                            <input type="number" name="Copies">
+                            <input type="number" name="copies">
                             </p>
 
                             <p>Genre:<br>
-                            <input type="text" name="Genre">
+                            <input type="text" name="genre">
                             </p>
+
+                            <p>Image Name:<br>
+                            <input type="text" name="img">
+                            </p>
+
+                            <!-- <p>Image File:<br>
+                            <input type="file" id="myFile" name="imgfile">
+                            </p> -->
 
                             <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Submit Book</button>
                             <br>

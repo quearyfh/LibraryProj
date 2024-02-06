@@ -73,12 +73,11 @@
         <div class="col-lg-4 vh-100">
             <div class="card">
                 <div class="card-header bg-success">
-                    <h5 class="card-title text-center"> Genres</h5>
+                    <h5 class="card-title text-center text-white">Options</h5>
                 </div>
                 <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-center "> <a class="nav-link" href="AdminUsers.php">View Users</a> </li>
                     <li class="list-group-item text-center "> <a class="nav-link" href="AddUser.php">Add User</a></li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Remove User</a></li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Edit User</a> </li>
                 </ul>
             </div>
         </div>
@@ -86,7 +85,7 @@
         <div class="col-lg-8 vh-100">
             <div class="card">
                 <div class="card-header bg-success">
-                    <h5 class="card-title text-center">Results Found</h5>
+                    <h5 class="card-title text-center text-white">Results Found</h5>
                 </div>
                 <div class="card-body">
                 <?php
@@ -105,7 +104,7 @@
                                                     <p class=\"card-text\"><b>Phone Number: </b>"  .$row["Phone"] ."</p>
                                                     <p class=\"card-text\"><b>Address: </b>"  .$row["address"] ."</p>
                                                     <p class=\"card-text\"><b>Admin Status: </b>"  .$row["status"] ."</p>
-                                                    <button type=\"button\" class=\"btn btn-sm btn-success\">Edit</button>
+                                                    <button type=\"button\" class=\"btn btn-sm btn-success\"><a class=\"nav-link\" href=\"EditUser.php?ucard=$ucard\">Edit</a></button>
                                                     <button type=\"button\" class=\"btn btn-sm btn-success\"><a class=\"nav-link\" href=\"DeleteUser.php?ucard=$ucard\">Remove</a></button>
                                             </div>
                                             </div>

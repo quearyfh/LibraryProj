@@ -74,7 +74,7 @@
         <div class="col-lg-6 vh-100">
             <div class="card">
                 <div class="card-header bg-success">
-                    <h5 class="card-title text-center">Newly Added</h5>
+                    <h5 class="card-title text-center text-white">Newly Added</h5>
                 </div>
                 <div class="card-body">
                     <div class = "row row-eq-height">
@@ -102,11 +102,10 @@
                     </div>
             </div>
         </div>
-
         <div class="col-lg-6 vh-100">
             <div class="card">
                 <div class="card-header bg-success">
-                    <h5 class="card-title text-center">Recently Returned</h5>
+                    <h5 class="card-title text-center text-white">Recently Returned</h5>
                 </div>
                 <div class="card-body">
                     <div class = "row row-eq-height">
@@ -118,6 +117,10 @@
                                 if (mysqli_num_rows($result) > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) {
                                         if ($ctr<3){
+                                            $ISBN = $row["ISBN"];
+                                            $sql = "select * from book where ISBN= '$ISBN'";
+                                            $result = mysqli_query($conn, $sql);
+                                            $row = mysqli_fetch_assoc($result);
                                             $pic = $row["img"];
                                             echo "<img src=\".\bookpic\\" .$row["img"] ."\" class=\"card-img-top\" alt=\"BookImage\">";
                                             echo "</div>";

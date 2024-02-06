@@ -11,7 +11,7 @@
         $_SESSION["ucard"] = $ucard;
         if($row["status"] != 'User'){
             $_SESSION["status"] = 'admin';
-            header("refresh:0.2; url=AdminHome.php");
+            header("refresh:0.2; url=Home.php");
         }
         else{
             $_SESSION["status"] = 'member';

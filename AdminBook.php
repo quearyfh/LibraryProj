@@ -73,12 +73,11 @@
         <div class="col-lg-4 vh-100">
             <div class="card">
                 <div class="card-header bg-success">
-                    <h5 class="card-title text-center"> Genres</h5>
+                    <h5 class="card-title text-center text-white">Options</h5>
                 </div>
                 <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-center "> <a class="nav-link" href="AdminBook.php">View Books</a> </li>
                     <li class="list-group-item text-center "> <a class="nav-link" href="AddBook.php">Add Book</a></li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Remove Book</a></li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Edit Book</a> </li>
                 </ul>
             </div>
         </div>
@@ -86,7 +85,7 @@
         <div class="col-lg-8 vh-100">
             <div class="card">
                 <div class="card-header bg-success">
-                    <h5 class="card-title text-center">Results Found</h5>
+                    <h5 class="card-title text-center text-white">Results Found</h5>
                     <?php
                                 $sql = "select * from book";
                                 $result = mysqli_query($conn, $sql);
@@ -105,7 +104,7 @@
                                                     <p class=\"card-text\"><b>ISBN: </b>"  .$row["ISBN"] .".</p>
                                                     <p class=\"card-text\"><b>Copies: </b>"  .$row["copies"] .".</p>
                                                     <p class=\"card-text\"><b>Genre: </b>"  .$row["genre"] .".</p>
-                                                    <button type=\"button\" class=\"btn btn-sm btn-success\">Edit</button>
+                                                    <button type=\"button\" class=\"btn btn-sm btn-success\"><a class=\"nav-link\" href=\"EditBook.php?ISBN=$ISBN\">Edit</a></button>
                                                     <button type=\"button\" class=\"btn btn-sm btn-success\"><a class=\"nav-link\" href=\"DeleteBook.php?ISBN=$ISBN\">Remove</a></button>
                                                 </div>
                                                 </div>
@@ -114,7 +113,7 @@
                                             ";
                                     }
                                 }
-                            ?>
+                    ?>
                 </div>
                 <div class="card-body">
                 </div>
