@@ -24,13 +24,22 @@
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul class="navbar-nav">
-                        <?php
-                            $ucard = $_SESSION["ucard"];
-                            $sql = "select * from member where ucard = '$ucard'"; 
-                            $result = mysqli_query($conn, $sql);
-                            $row = mysqli_fetch_assoc($result);
-                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
-                        ?>
+                    <?php
+                        $ucard = $_SESSION["ucard"];
+                        $sql = "select * from member where ucard = '$ucard'"; 
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_assoc($result);
+                        echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
+                        if($_SESSION["status"] == 'admin'){
+                           echo "<li class=\"nav-item dropdown\">
+                           <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>
+                           <ul class=\"dropdown-menu\">
+                               <li><a class=\"dropdown-item\" href=\"AdminBook.php\">Book Access</a></li>
+                               <li><a class=\"dropdown-item\" href=\"AdminUsers.php\">User Access</a></li>
+                           </ul>
+                           </li> " ;
+                        }
+                    ?>
                         <li class="nav-item"><a class="nav-link" href="Login.php">Log Out</a></li>
                     </ul>
                     </div>
@@ -65,7 +74,7 @@
         <div class="col-lg-4 vh-100">
             <div class="card">
                 <div class="card-header bg-success">
-                    <h5 class="card-title text-center"> <a class="nav-link" href="Catalog.php">Genres</a></h5>
+                    <h5 class="card-title text-center text-white"> <a class="nav-link" href="Catalog.php">Genres</a></h5>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item text-center "> <a class="nav-link" href="Catalog.php?Genre=Business">Business</a></li>
@@ -82,7 +91,7 @@
         <div class="col-lg-8 vh-100">
             <div class="card">
                 <div class="card-header bg-success">
-                    <h5 class="card-title text-center">Results Found</h5>
+                    <h5 class="card-title text-center text-white">Results Found</h5>
                 </div>
                 <div class="card-body">
                 <?php
@@ -104,10 +113,10 @@
                         <div class=\"col-md-8\">
                         <div class=\"card-body\">
                             <h5 class=\"card-title\">" .$row["title"] ."</h5>
-                            <p class=\"card-text\"><b>Author: </b>"  .$row["author"] .".</p>
-                            <p class=\"card-text\"><b>ISBN: </b>"  .$row["ISBN"] .".</p>
-                            <p class=\"card-text\"><b>Copies: </b>"  .$row["copies"] .".</p>
-                            <p class=\"card-text\"><b>Genre: </b>"  .$row["genre"] .".</p>
+                            <p class=\"card-text\"><b>Author: </b>"  .$row["author"] ."</p>
+                            <p class=\"card-text\"><b>ISBN: </b>"  .$row["ISBN"] ."</p>
+                            <p class=\"card-text\"><b>Copies: </b>"  .$row["copies"] ."</p>
+                            <p class=\"card-text\"><b>Genre: </b>"  .$row["genre"] ."</p>
                             <button type=\"button\" class=\"btn btn-sm btn-success\">Check Out</button>
                         </div>
                         </div>

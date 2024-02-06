@@ -16,7 +16,7 @@
         <div class="col-lg-1 text-center">
                 <h2>This is A</h2>
         </div>
-        <div class="col-lg-3 text-left">
+        <div class="col-lg-3 text-left text-success">
                 <h1>Library</h1>
         </div>
         <div class="col-lg-4 ms-auto text-end">
@@ -24,20 +24,22 @@
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
-                    <?php
+                <?php
                         $ucard = $_SESSION["ucard"];
                         $sql = "select * from member where ucard = '$ucard'"; 
                         $result = mysqli_query($conn, $sql);
                         $row = mysqli_fetch_assoc($result);
                         echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
+                        if($_SESSION["status"] == 'admin'){
+                           echo "<li class=\"nav-item dropdown\">
+                           <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>
+                           <ul class=\"dropdown-menu\">
+                               <li><a class=\"dropdown-item\" href=\"AdminBook.php\">Book Access</a></li>
+                               <li><a class=\"dropdown-item\" href=\"AdminUsers.php\">User Access</a></li>
+                           </ul>
+                           </li> " ;
+                        }
                     ?>
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Admin Pages</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="AdminBook.php">Book Access</a></li>
-                        <li><a class="dropdown-item" href="AdminUsers.php">User Access</a></li>
-                    </ul>
-                    </li>
                     <li class="nav-item"><a class="nav-link" href="Login.php">Log Out</a></li>
                 </ul>
                 </div>
@@ -50,7 +52,7 @@
         <div class="col-sm-2"></div>
 
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="AdminHome.php">Home</a></button>
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="Home.php">Home</a></button>
         </div>
         <div class="col-sm-2">
             <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="Catalog.php">Catalog</a></button>
@@ -71,12 +73,11 @@
         <div class="col-lg-4 vh-100">
             <div class="card">
                 <div class="card-header bg-success">
-                    <h5 class="card-title text-center"> Genres</h5>
+                    <h5 class="card-title text-center text-white">Options</h5>
                 </div>
                 <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-center "> <a class="nav-link" href="AdminBook.php">View Books</a> </li>
                     <li class="list-group-item text-center "> <a class="nav-link" href="AddBook.php">Add Book</a></li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Remove Book</a></li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="FQ_SS_FP.html">Edit Book</a> </li>
                 </ul>
             </div>
         </div>
@@ -84,12 +85,13 @@
         <div class="col-lg-8 vh-100">
             <div class="card">
                 <div class="card-header bg-success">
-                    <h5 class="card-title text-center">Results Found</h5>
+                    <h5 class="card-title text-center text-white">Results Found</h5>
                     <?php
                                 $sql = "select * from book";
                                 $result = mysqli_query($conn, $sql);
                                 if (mysqli_num_rows($result) > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) {
+                                        $ISBN=$row["ISBN"];
                                         echo "<div class=\"card mb-3\" style=\"max-width: 540px;\">";
                                             echo "<div class=\"row g-0\">";
                                                 echo "<div class=\"col-md-4\">
@@ -102,8 +104,8 @@
                                                     <p class=\"card-text\"><b>ISBN: </b>"  .$row["ISBN"] .".</p>
                                                     <p class=\"card-text\"><b>Copies: </b>"  .$row["copies"] .".</p>
                                                     <p class=\"card-text\"><b>Genre: </b>"  .$row["genre"] .".</p>
-                                                    <button type=\"button\" class=\"btn btn-sm btn-success\">Edit</button>
-                                                    <button type=\"button\" class=\"btn btn-sm btn-success\">Remove</button>
+                                                    <button type=\"button\" class=\"btn btn-sm btn-success\"><a class=\"nav-link\" href=\"EditBook.php?ISBN=$ISBN\">Edit</a></button>
+                                                    <button type=\"button\" class=\"btn btn-sm btn-success\"><a class=\"nav-link\" href=\"DeleteBook.php?ISBN=$ISBN\">Remove</a></button>
                                                 </div>
                                                 </div>
                                             </div>
@@ -111,7 +113,7 @@
                                             ";
                                     }
                                 }
-                            ?>
+                    ?>
                 </div>
                 <div class="card-body">
                 </div>

@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Library Admin Users </title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>    
+    <title>Library Admin Books </title>
     <?php session_start(); require('Connection.php');?>
 </head>
 
@@ -73,11 +73,11 @@
         <div class="col-lg-4 vh-100">
             <div class="card">
                 <div class="card-header bg-success">
-                    <h5 class="card-title text-center text-white">Options</h5>
+                    <h5 class="card-title text-center">Options</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-center "> <a class="nav-link" href="AdminUsers.php">View Users</a> </li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="AddUser.php">Add User</a></li>
+                <li class="list-group-item text-center "> <a class="nav-link" href="AdminBook.php">View Books</a> </li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="AddBook.php">Add Book</a></li>
                 </ul>
             </div>
         </div>
@@ -85,33 +85,54 @@
         <div class="col-lg-8 vh-100">
             <div class="card">
                 <div class="card-header bg-success">
-                    <h5 class="card-title text-center text-white">Results Found</h5>
-                </div>
-                <div class="card-body">
-                <?php
-                                $sql = "select * from member";
-                                $result = mysqli_query($conn, $sql);
-                                if (mysqli_num_rows($result) > 0) {
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        $ucard=$row["Ucard"] ;
-                                        echo "<div class=\"card mb-3\" style=\"max-width: 540px;\">";
-                                            echo "<div class=\"row g-0\">";
-                                                echo "
-                                                <div class=\"card-body\">
-                                                    <h5 class=\"card-title\">" .$row["fname"] ." " .$row["lname"] ."</h5>
-                                                    <p class=\"card-text\"><b>Ucard Number: </b>"  .$row["Ucard"] ."</p>
-                                                    <p class=\"card-text\"><b>Email: </b>"  .$row["email"] ."</p>
-                                                    <p class=\"card-text\"><b>Phone Number: </b>"  .$row["Phone"] ."</p>
-                                                    <p class=\"card-text\"><b>Address: </b>"  .$row["address"] ."</p>
-                                                    <p class=\"card-text\"><b>Admin Status: </b>"  .$row["status"] ."</p>
-                                                    <button type=\"button\" class=\"btn btn-sm btn-success\"><a class=\"nav-link\" href=\"EditUser.php?ucard=$ucard\">Edit</a></button>
-                                                    <button type=\"button\" class=\"btn btn-sm btn-success\"><a class=\"nav-link\" href=\"DeleteUser.php?ucard=$ucard\">Remove</a></button>
-                                            </div>
-                                            </div>
-                                            ";
-                                    }
-                                }
+                    <h5 class="card-title text-center">Results Found</h5>
+                </div>  
+                    <div class="card-body text-center">  
+                        <form name ="UpdateBook" method= "post" action= "UpdateBook.php">
+                            <h3> Change the field you would like to update</h3>
+                        <?php
+                            $ISBN = $_GET['ISBN'];
+                            $sql = "select * from book where ISBN = $ISBN";
+                            $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0){
+                                $row = mysqli_fetch_assoc($result);
+                            }
+                            echo "
+                            <p>Title:<br>
+                            <input type=\"text\" name=\"title\" value='" . $row['title'] ."'>
+                            </p>
+
+                            <p>Author:<br>
+                            <input type=\"text\" name=\"author\" value='" . $row['author'] ."'>
+                            </p>
+
+                            <p>ISBN:<br>
+                            <input type=\"number\" name=\"ISBN\" value='" . $row['ISBN'] ."'>
+                            </p>
+
+                            <p>Copies:<br>
+                            <input type=\"number\" name=\"copies\" value='" . $row['copies'] ."'>
+                            </p>
+
+                            <p>Genre:<br>
+                            <input type=\"text\" name=\"genre\" value='" . $row['genre'] ."'>
+                            </p>
+
+                            <p>Image Name:<br>
+                            <input type=\"text\" name=\"img\" value='" . $row['img'] ."'>
+                            </p>
+
+                            
+                            ";
                             ?>
+                            <!-- <p>Image File:<br>
+                             <input type=\"file\" id=\"myFile\" name=\"imgfile\">
+                            </p> -->
+
+                            <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Change Book</button>
+                            <br>
+                        </form>
+                </div>
                 </div>
             </div>
         </div>
