@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Library Catalog </title>
+    <title>Library</title>
     <?php session_start(); require('Connection.php');?>
 </head>
 
@@ -34,8 +34,8 @@
                            echo "<li class=\"nav-item dropdown\">
                            <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>
                            <ul class=\"dropdown-menu\">
-                               <li><a class=\"dropdown-item\" href=\"AdminBook.php\">Book Access</a></li>
-                               <li><a class=\"dropdown-item\" href=\"AdminUsers.php\">User Access</a></li>
+                               <li><a class=\"dropdown-item\" href=\".\Books\AdminBook.php\">Book Access</a></li>
+                               <li><a class=\"dropdown-item\" href=\".\Users\AdminUsers.php\">User Access</a></li>
                            </ul>
                            </li> " ;
                         }
@@ -66,7 +66,6 @@
         </div>
         <div class="col-sm-2"></div>
     </div>
-    <!-- <div class="well bg-light " > .   </div> -->
     <div class="vr"></div> 
     <div class= "container-fluid content-row">
 
@@ -108,7 +107,7 @@
                         echo "<div class=\"card mb-3\" style=\"max-width: 540px;\">";
                         echo "<div class=\"row g-0\">";
                         echo "<div class=\"col-md-4\">
-                        <img src=\".\bookpic\\" .$row["img"] ."\" class=\"card-img-top\" alt=\"BookImage\">
+                        <img src=\".\Books\bookpic\\" .$row["img"] ."\" class=\"card-img-top\" alt=\"BookImage\">
                         </div>
                         <div class=\"col-md-8\">
                         <div class=\"card-body\">
