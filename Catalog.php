@@ -81,7 +81,7 @@
                     <li class="list-group-item text-center "> <a class="nav-link" href="Catalog.php?Genre=Fantasy">Fantasy</a> </li>
                     <li class="list-group-item text-center "> <a class="nav-link" href="Catalog.php?Genre=Sci-Fi">Sci-Fi</a></li>
                     <li class="list-group-item text-center "> <a class="nav-link" href="Catalog.php?Genre=Horror">Horror</a> </li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="Catalog.php?Genre=Mystery&Thriller">Mystery & Thriller </a></li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="Catalog.php?Genre=Mystery">Mystery</a></li>
                     <li class="list-group-item text-center "> <a class="nav-link" href="Catalog.php?Genre=Nature">Nature</a></li>
                 </ul>
             </div>
