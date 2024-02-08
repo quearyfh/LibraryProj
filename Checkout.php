@@ -35,12 +35,12 @@
                             echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
                             if ($_SESSION["status"] == 'admin') {
                                 echo "<li class=\"nav-item dropdown\">
-                           <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>
-                           <ul class=\"dropdown-menu\">
-                               <li><a class=\"dropdown-item\" href=\".\Books\AdminBook.php\">Book Access</a></li>
-                               <li><a class=\"dropdown-item\" href=\".\Users\AdminUsers.php\">User Access</a></li>
-                           </ul>
-                           </li> ";
+                                <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>
+                                <ul class=\"dropdown-menu\">
+                                    <li><a class=\"dropdown-item\" href=\".\Books\AdminBook.php\">Book Access</a></li>
+                                    <li><a class=\"dropdown-item\" href=\".\Users\AdminUsers.php\">User Access</a></li>
+                                </ul>
+                                </li> ";
                             }
                             ?>
                             <li class="nav-item"><a class="nav-link" href="Login.php">Log Out</a></li>
@@ -54,7 +54,6 @@
     <div class="vr"></div>
     <div class="row">
         <div class="col-sm-2"></div>
-
         <div class="col-sm-2">
             <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="Home.php">Home</a></button>
         </div>
@@ -70,47 +69,21 @@
         <div class="col-sm-2"></div>
     </div>
     <div class="vr"></div>
+
+
     <div class="container-fluid content-row">
-
         <div class="row row-eq-height">
-            <div class="col-lg-4 vh-100">
-                <div class="card">
-                    <div class="card-header bg-success">
-                        <h5 class="card-title text-center text-white"> <a class="nav-link" href="Catalog.php">Genres</a>
-                        </h5>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center "> <a class="nav-link"
-                                href="Catalog.php?Genre=Business">Business</a></li>
-                        <li class="list-group-item text-center "> <a class="nav-link"
-                                href="Catalog.php?Genre=Cooking">Cooking</a></li>
-                        <li class="list-group-item text-center "> <a class="nav-link"
-                                href="Catalog.php?Genre=Fantasy">Fantasy</a> </li>
-                        <li class="list-group-item text-center "> <a class="nav-link"
-                                href="Catalog.php?Genre=Sci-Fi">Sci-Fi</a></li>
-                        <li class="list-group-item text-center "> <a class="nav-link"
-                                href="Catalog.php?Genre=Horror">Horror</a> </li>
-                        <li class="list-group-item text-center "> <a class="nav-link"
-                                href="Catalog.php?Genre=Mystery">Mystery</a></li>
-                        <li class="list-group-item text-center "> <a class="nav-link"
-                                href="Catalog.php?Genre=Nature">Nature</a></li>
-                    </ul>
-                </div>
+            <div class="col-lg-2">
             </div>
-
-            <div class="col-lg-6 vh-100">
+            <div class="col-lg-8">
                 <div class="card">
                     <div class="card-header bg-success">
-                        <h5 class="card-title text-center text-white">Results Found</h5>
+                        <h5 class="card-title text-center text-white">Currently Checking Out</h5>
                     </div>
                     <div class="card-body">
                         <?php
-                        if (!empty($_GET)) {
-                            $Genre = $_GET['Genre'];
-                            $sql = "select * from book where genre='$Genre' and copies>0";
-                        } else {
-                            $sql = "select * from book where copies>0";
-                        }
+                        $ucard = $_SESSION["ucard"];
+                        $sql = "select * from book where ISBN=(select ISBN from cart where ucard=$ucard);";
                         $result = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
@@ -118,32 +91,31 @@
                                 echo "<div class=\"card mb-3\" style=\"max-width: 540px;\">";
                                 echo "<div class=\"row g-0\">";
                                 echo "<div class=\"col-md-4\">
-                        <img src=\".\Books\bookpic\\" . $row["img"] . "\" class=\"card-img-top\" alt=\"BookImage\">
-                        </div>
-                        <div class=\"col-md-8\">
-                        <div class=\"card-body\">
-                            <h5 class=\"card-title\">" . $row["title"] . "</h5>
-                            <p class=\"card-text\"><b>Author: </b>" . $row["author"] . "</p>
-                            <p class=\"card-text\"><b>ISBN: </b>" . $row["ISBN"] . "</p>
-                            <p class=\"card-text\"><b>Copies: </b>" . $row["copies"] . "</p>
-                            <p class=\"card-text\"><b>Genre: </b>" . $row["genre"] . "</p>
-                            <button type=\"button\" class=\"btn btn-sm btn-success text-center\"> <a class=\"nav-link\" href=\"AddtoCart.php?ISBN=$ISBN
-                            \">Add to Check Out</a></button>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                        ";
+                                <img src=\".\Books\bookpic\\" . $row["img"] . "\" class=\"card-img-top\" alt=\"BookImage\">
+                                </div>
+                                <div class=\"col-md-8\">
+                                <div class=\"card-body\">
+                                    <h5 class=\"card-title\">" . $row["title"] . "</h5>
+                                    <p class=\"card-text\"><b>Author: </b>" . $row["author"] . "</p>
+                                    <p class=\"card-text\"><b>ISBN: </b>" . $ISBN . "</p>
+                                    <p class=\"card-text\"><b>Copies: </b>" . $row["copies"] . "</p>
+                                    <p class=\"card-text\"><b>Genre: </b>" . $row["genre"] . "</p>
+                                    <button type=\"button\" class=\"btn btn-sm btn-success text-center\"> <a class=\"nav-link\" href=\"CheckedOut.php?ISBN=$ISBN
+                                    \">Confirm Checkout </a></button>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                ";
                             }
+                        }else{
+                            echo "<p class=\"card-text text-center\"> You currently have no books in your check out.</p>";
                         }
                         ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-
 
 </body>
