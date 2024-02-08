@@ -24,7 +24,7 @@
     <div class="jumbotron">
         <h1>This is a Library</h1>
     </div>
-    <div class="well bg-dark " > .   </div>
+    <div class="well bg-dark " >.</div>
     <div class="vr"></div>
     <div class="row">
         <div class="col-sm-2"></div>
@@ -47,7 +47,23 @@
     <div class="vr"></div> 
 
 
-<div class="well bg-dark " >" "</div>
+
+
+<div class="d-grid gap-2">
+    <div class="well bg-dark " >.</div>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col"> 
+                <div class="card">
+                    <div class="card-header bg-success">
+                        <p class="text-center fs-2 lh-1"> Cart</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    <hr>
+</div>
 
 <div class="row">
     <div class="col-2"></div>
