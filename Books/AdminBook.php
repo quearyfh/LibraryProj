@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Library Admin Users </title>
-    <?php session_start(); require('Connection.php');?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>    
+    <title>Library</title>
+    <?php session_start(); require('..\Connection.php');?>
 </head>
 
 <body class ="text-bg-light">
@@ -35,12 +35,12 @@
                            <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>
                            <ul class=\"dropdown-menu\">
                                <li><a class=\"dropdown-item\" href=\"AdminBook.php\">Book Access</a></li>
-                               <li><a class=\"dropdown-item\" href=\"AdminUsers.php\">User Access</a></li>
+                               <li><a class=\"dropdown-item\" href=\"..\Users\AdminUsers.php\">User Access</a></li>
                            </ul>
                            </li> " ;
                         }
                     ?>
-                    <li class="nav-item"><a class="nav-link" href="Login.php">Log Out</a></li>
+                    <li class="nav-item"><a class="nav-link" href="..\Login.php">Log Out</a></li>
                 </ul>
                 </div>
             </div>
@@ -52,10 +52,10 @@
         <div class="col-sm-2"></div>
 
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="Home.php">Home</a></button>
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Home.php">Home</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="Catalog.php">Catalog</a></button>
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Catalog.php">Catalog</a></button>
         </div>
         <div class="col-sm-2">
             <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="#">Check Out</a></button>
@@ -65,7 +65,7 @@
         </div>
         <div class="col-sm-2"></div>
     </div>
-    <!-- <div class="well bg-light " > .   </div> -->
+
     <div class="vr"></div> 
     <div class= "container-fluid content-row">
 
@@ -76,42 +76,46 @@
                     <h5 class="card-title text-center text-white">Options</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-center "> <a class="nav-link" href="AdminUsers.php">View Users</a> </li>
-                    <li class="list-group-item text-center "> <a class="nav-link" href="AddUser.php">Add User</a></li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="AdminBook.php">View Books</a> </li>
+                    <li class="list-group-item text-center "> <a class="nav-link" href="AddBook.php">Add Book</a></li>
                 </ul>
             </div>
         </div>
 
         <div class="col-lg-8 vh-100">
-            <div class="card">
+            <div class="card bg-success">
                 <div class="card-header bg-success">
                     <h5 class="card-title text-center text-white">Results Found</h5>
-                </div>
-                <div class="card-body">
-                <?php
-                                $sql = "select * from member";
+                    <?php
+                                $sql = "select * from book";
                                 $result = mysqli_query($conn, $sql);
                                 if (mysqli_num_rows($result) > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) {
-                                        $ucard=$row["Ucard"] ;
+                                        $ISBN=$row["ISBN"];
                                         echo "<div class=\"card mb-3\" style=\"max-width: 540px;\">";
                                             echo "<div class=\"row g-0\">";
-                                                echo "
+                                                echo "<div class=\"col-md-4\">
+                                                <img src=\".\bookpic\\" .$row["img"] ."\" class=\"card-img-top\" alt=\"BookImage\">
+                                                </div>
+                                                <div class=\"col-md-8\">
                                                 <div class=\"card-body\">
-                                                    <h5 class=\"card-title\">" .$row["fname"] ." " .$row["lname"] ."</h5>
-                                                    <p class=\"card-text\"><b>Ucard Number: </b>"  .$row["Ucard"] ."</p>
-                                                    <p class=\"card-text\"><b>Email: </b>"  .$row["email"] ."</p>
-                                                    <p class=\"card-text\"><b>Phone Number: </b>"  .$row["Phone"] ."</p>
-                                                    <p class=\"card-text\"><b>Address: </b>"  .$row["address"] ."</p>
-                                                    <p class=\"card-text\"><b>Admin Status: </b>"  .$row["status"] ."</p>
-                                                    <button type=\"button\" class=\"btn btn-sm btn-success\"><a class=\"nav-link\" href=\"EditUser.php?ucard=$ucard\">Edit</a></button>
-                                                    <button type=\"button\" class=\"btn btn-sm btn-success\"><a class=\"nav-link\" href=\"DeleteUser.php?ucard=$ucard\">Remove</a></button>
+                                                    <h5 class=\"card-title\">" .$row["title"] ."</h5>
+                                                    <p class=\"card-text\"><b>Author: </b>"  .$row["author"] ."</p>
+                                                    <p class=\"card-text\"><b>ISBN: </b>"  .$row["ISBN"] ."</p>
+                                                    <p class=\"card-text\"><b>Copies: </b>"  .$row["copies"] ."</p>
+                                                    <p class=\"card-text\"><b>Genre: </b>"  .$row["genre"] ."</p>
+                                                    <button type=\"button\" class=\"btn btn-sm btn-success\"><a class=\"nav-link\" href=\"EditBook.php?ISBN=$ISBN\">Edit</a></button>
+                                                    <button type=\"button\" class=\"btn btn-sm btn-success\"><a class=\"nav-link\" href=\"DeleteBook.php?ISBN=$ISBN\">Remove</a></button>
+                                                </div>
+                                                </div>
                                             </div>
                                             </div>
                                             ";
                                     }
                                 }
-                            ?>
+                    ?>
+                </div>
+                <div class="card-body">
                 </div>
             </div>
         </div>

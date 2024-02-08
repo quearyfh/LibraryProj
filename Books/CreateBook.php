@@ -1,5 +1,5 @@
 <?php
-    include("Connection.php");
+    include("..\Connection.php");
     $title=$_POST["title"];
     $author=$_POST["author"];
     $ISBN=$_POST["ISBN"];

@@ -1,6 +1,6 @@
 <?php
     session_start(); 
-    include("Connection.php");
+    include("..\Connection.php");
     $ucard=$_POST["ucard"];
     $phone=$_POST["phone"];
 
@@ -11,16 +11,16 @@
         $_SESSION["ucard"] = $ucard;
         if($row["status"] != 'User'){
             $_SESSION["status"] = 'admin';
-            header("refresh:0.2; url=Home.php");
+            header("refresh:0.2; url=..\Home.php");
         }
         else{
             $_SESSION["status"] = 'member';
-            header("refresh:0.2; url=Home.php");
+            header("refresh:0.2; url=..\Home.php");
         }  
     }
     else{
         echo "<h1> Your Login Information is incorrect</h1>";
-        header("refresh:0.5; url=Login.php");
+        header("refresh:0.5; url=..\Login.php");
     }
     
 ?>
