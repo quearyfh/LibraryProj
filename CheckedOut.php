@@ -2,9 +2,14 @@
 session_start();
 include("Connection.php");
 $ISBN = $_GET['ISBN'];
+$dateoption = $_POST['returndate'];
 $ucard = $_SESSION["ucard"];
-$nextWeek = time() + (7 * 24 * 60 * 60);
-$date= date('Y-m-d', $nextWeek);
+if ($dateoption=="4"){
+    $datereturned = time() + (28 * 24 * 60 * 60);
+}else{
+    $datereturned = time() + (7 * 24 * 60 * 60);
+}
+$date= date('Y-m-d', $datereturned);
 
 
 $sql = "update book set copies= copies-1 where ISBN=$ISBN;";
@@ -15,6 +20,6 @@ $sql = "insert into checkout (ucard, ISBN, dateReturn) VALUES('$ucard','$ISBN', 
 
 
 if (mysqli_query($conn, $sql)) {
-    echo "<script type=\"text/javascript\"> alert(\"The book has been altered\"); </script>";
-    header("refresh:0.2; url=Checkout.php");
+    echo "<script type=\"text/javascript\"> alert(\"The book has been checked out!\"); </script>";
+    header("refresh:0; url=Checkout.php");
 }

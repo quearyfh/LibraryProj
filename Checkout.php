@@ -83,7 +83,7 @@
                     <div class="card-body">
                         <?php
                         $ucard = $_SESSION["ucard"];
-                        $sql = "select * from book where ISBN=(select ISBN from cart where ucard=$ucard);";
+                        $sql = "select * from book where ISBN IN (select ISBN from cart where ucard=$ucard);";
                         $result = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
@@ -100,8 +100,26 @@
                                     <p class=\"card-text\"><b>ISBN: </b>" . $ISBN . "</p>
                                     <p class=\"card-text\"><b>Copies: </b>" . $row["copies"] . "</p>
                                     <p class=\"card-text\"><b>Genre: </b>" . $row["genre"] . "</p>
-                                    <button type=\"button\" class=\"btn btn-sm btn-success text-center\"> <a class=\"nav-link\" href=\"CheckedOut.php?ISBN=$ISBN
-                                    \">Confirm Checkout </a></button>
+                                    <p class=\"card-text\"><b>Check Out For: </b>
+                                    <form method=\"POST\" action=\"CheckedOut.php?ISBN=$ISBN\">
+                                    <div class=\"form-check\">
+                                    <input class=\"form-check-input\" type=\"radio\" name=\"returndate\" value=\"1\" checked>
+                                    <label class=\"form-check-label\" for=\"flexRadioDefault1\">
+                                        1 week
+                                    </label>
+                                    </div>
+                                    
+                                    <div class=\"form-check\">
+                                    <input class=\"form-check-input\" type=\"radio\" name=\"returndate\" value=\"4\" >
+                                    <label class=\"form-check-label\" for=\"flexRadioDefault2\">
+                                        4 weeks
+                                    </label>
+                                    
+                                    </div>
+                                    </p>
+                                    
+                                    <button type=\"submit\" class=\"btn btn-sm btn-success text-center\">Confirm Checkout</button>
+                                    </form>
                                 </div>
                                 </div>
                                 </div>

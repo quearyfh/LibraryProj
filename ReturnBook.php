@@ -83,7 +83,7 @@
                     <div class="card-body">
                         <?php
                         $ucard = $_SESSION["ucard"];
-                        $sql = "select * from book where ISBN=(select ISBN from checkout where ucard=$ucard);";
+                        $sql = "select * from book where ISBN IN(select ISBN from checkout where ucard=$ucard);";
                         $result = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
@@ -98,15 +98,23 @@
                                     <h5 class=\"card-title\">" . $row["title"] . "</h5>
                                     <p class=\"card-text\"><b>Author: </b>" . $row["author"] . "</p>
                                     <p class=\"card-text\"><b>ISBN: </b>" . $row["ISBN"] . "</p>
-                                    <p class=\"card-text\"><b>Copies: </b>" . $row["copies"] . "</p>
-                                    <p class=\"card-text\"><b>Genre: </b>" . $row["genre"] . "</p>
-                                    <button type=\"button\" class=\"btn btn-sm btn-success text-center\"> <a class=\"nav-link\" href=\"ActualReturn.php?ISBN=$ISBN
-                                    \">Return </a></button>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
-                                ";
+                                    <p class=\"card-text\"><b>Genre: </b>" . $row["genre"] . "</p>";
+                            }
+                            $sql = "select * from checkout where ISBN=$ISBN";
+                            $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                        echo "
+                                        <p class=\"card-text\"><b>Date Checked Out: </b>" . $row["DateCheck"] . "</p>
+                                        <p class=\"card-text\"><b>Date to Return : </b>" . $row["DateReturn"] . "</p>
+                                        <button type=\"button\" class=\"btn btn-sm btn-success text-center\"> <a class=\"nav-link\" href=\"ActualReturn.php?ISBN=$ISBN
+                                        \">Return </a></button>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    ";
+                                }
                             }
                         }else{
                             echo "<p class=\"card-text text-center\"> You currently have no books to return.</p>";
