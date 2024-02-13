@@ -49,6 +49,7 @@
                 </div>
             </nav>
         </div>
+        </div>
         <div class="well bg-dark "> . </div>
         <div class="vr"></div>
         <div class="row">

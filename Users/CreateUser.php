@@ -14,5 +14,3 @@ if (mysqli_query($conn, $sql)) {
     echo "<script type=\"text/javascript\"> alert(\"The member has been added!\"); </script>";
     header("refresh:0; url=..\Home.php");
 }
-
-

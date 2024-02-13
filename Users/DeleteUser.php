@@ -11,4 +11,3 @@ if (mysqli_query($conn, $sql)) {
     echo "<script type=\"text/javascript\"> alert(\"The user has been NOT removed!\"); </script>";
     header("refresh:0; url=AdminUsers.php");
 }
-

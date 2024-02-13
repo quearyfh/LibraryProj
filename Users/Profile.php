@@ -49,85 +49,87 @@
                 </div>
             </nav>
         </div>
-        <div class="well bg-dark "> . </div>
-        <div class="vr"></div>
-        <div class="row">
-            <div class="col-sm-2"></div>
+    </div>
+    <div class="well bg-dark "> . </div>
+    <div class="vr"></div>
+    <div class="row">
+        <div class="col-sm-2"></div>
 
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
-                        href="..\Home.php">Home</a></button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
-                        href="..\Catalog.php">Catalog</a></button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
-                        href="..\Checkout.php">Check Out</a></button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
-                        href="..\ReturnBook.php">Return Books</a></button>
-            </div>
-            <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\Home.php">Home</a></button>
         </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\Catalog.php">Catalog</a></button>
+        </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\Checkout.php">Check Out</a></button>
+        </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\ReturnBook.php">Return Books</a></button>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
 
-        <div class="vr"></div>
-        <div class="container-fluid content-row">
-            <div class="card">
-                <div class="card-header bg-success">
-                    <h5 class="card-title text-center">Your Current Information</h5>
-                </div>
-                <div class="card-body text-center">
-                    <?php
+    <div class="vr"></div>
+    <div class="container-fluid content-row">
+        
+        <div class="card">
+            <div class="card-header bg-success">
+                <h5 class="card-title text-center text-white">Your Current Information</h5>
+            </div>
+            <div class="card-body text-center">
+                <?php
                             $sql = "select * from member where ucard = $ucard";
                             echo "
                         <form name =\"UpdateUser\" method= \"post\" action= \"UpdateUser.php?ucard=$ucard\">
-                            <h5> Change the field you would like to update</h5>";
+                            <h5> Change the field you would like to update</h5><br>";
+
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 $row = mysqli_fetch_assoc($result);
                             }
                             echo "
-                            <p>First Name:<br>
+                            <p><b>First Name:</b><br>
                             <input type=\"text\" name=\"fname\" value='" . $row['fname'] . "'required>
                             </p>
 
-                            <p>Last Name:<br>
+                            <p><b>Last Name:</b><br>
                             <input type=\"text\" name=\"lname\" value='" . $row['lname'] . "'required>
                             </p>
 
-                            <p>Email:<br>
+                            <p><b>Email:</b><br>
                             <input type=\"text\" name=\"email\" value='" . $row['email'] . "'required>
                             </p>
 
-                            <p>Ucard Number:<br>
+                            <p><b>Ucard Number:</b><br>
                             <input type=\"number\" name=\"ucard\" value='" . $row['Ucard'] . "'required disabled>
                             </p>
 
-                            <p>Phone:<br>
+                            <p><b>Phone:</b><br>
                             <input type=\"number\" name=\"phone\" value='" . $row['Phone'] . "'required>
                             </p>
 
-                            <p>Address:<br>
+                            <p><b>Address:</b><br>
                             <input type=\"text\" name=\"address\" value='" . $row['address'] . "'required>
                             </p>
 
-                            <p>Status:<br>
+                            <p><b>Status:</b><br>
                             <input type=\"text\" name=\"status\" value='" . $row['status'] . "'disabled>
                             </p>
                             ";
                             ?>
 
-                    <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Change
-                        User</button>
-                    <br>
-                    </form>
-                </div>
+                <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Change
+                    User</button>
+                <br>
+                </form>
             </div>
-
         </div>
+    </div>
     </div>
 
 

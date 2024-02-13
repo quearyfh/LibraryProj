@@ -20,4 +20,3 @@ if (mysqli_num_rows($result) > 0) {
     echo "<script type=\"text/javascript\"> alert(\"Your Login Information is incorrect!\"); </script>";
     header("refresh:0; url=..\Login.php");
 }
-

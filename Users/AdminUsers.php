@@ -49,51 +49,56 @@
                 </div>
             </nav>
         </div>
-        <div class="well bg-dark "> . </div>
-        <div class="vr"></div>
-        <div class="row">
-            <div class="col-sm-2"></div>
+    </div>
+    <div class="well bg-dark "> . </div>
+    <div class="vr"></div>
+    <div class="row">
+        <div class="col-sm-2"></div>
 
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Home.php">Home</a></button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Catalog.php">Catalog</a></button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Checkout.php">Check Out</a></button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\ReturnBook.php">Return Books</a></button>
-            </div>
-            <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\Home.php">Home</a></button>
         </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\Catalog.php">Catalog</a></button>
+        </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\Checkout.php">Check Out</a></button>
+        </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\ReturnBook.php">Return Books</a></button>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
 
-        <div class="vr"></div>
-        <div class="container-fluid content-row">
+    <div class="vr"></div>
+    <div class="container-fluid content-row">
 
-            <div class="row row-eq-height">
-                <div class="col-lg-4 vh-100">
-                    <div class="card">
-                        <div class="card-header bg-success">
-                            <h5 class="card-title text-center text-white">Options</h5>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item text-center "> <a class="nav-link" href="AdminUsers.php">View
-                                    Users</a> </li>
-                            <li class="list-group-item text-center "> <a class="nav-link" href="AddUser.php">Add
-                                    User</a></li>
-                        </ul>
+        <div class="row row-eq-height">
+            <div class="col-lg-4 vh-100">
+                <div class="card">
+                    <div class="card-header bg-success">
+                        <h5 class="card-title text-center text-white">Options</h5>
                     </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-center "> <a class="nav-link" href="AdminUsers.php">View
+                                Users</a> </li>
+                        <li class="list-group-item text-center "> <a class="nav-link" href="AddUser.php">Add
+                                User</a></li>
+                    </ul>
                 </div>
+            </div>
 
-                <div class="col-lg-8 vh-100">
-                    <div class="card bg-success">
-                        <div class="card-header bg-success">
-                            <h5 class="card-title text-center text-white ">Results Found</h5>
-                        </div>
-                        <div class="card-body">
-                            <?php
+            <div class="col-lg-8 vh-100">
+                <div class="card bg-success">
+                    <div class="card-header bg-success">
+                        <h5 class="card-title text-center text-white ">Results Found</h5>
+                    </div>
+                    <div class="card-body">
+                        <?php
                             $sql = "select * from member";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
@@ -118,10 +123,10 @@
                                 }
                             }
                             ?>
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
 
 
