@@ -22,7 +22,7 @@
         <div class="col-lg-3 text-left text-success">
             <h1>Library</h1>
         </div>
-        <div class="col-lg-3 ms-auto text-end">
+        <div class="col-lg-4 ms-auto text-end">
             <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse" id="collapsibleNavbar">
@@ -32,7 +32,7 @@
                             $sql = "select * from member where ucard = '$ucard'";
                             $result = mysqli_query($conn, $sql);
                             $row = mysqli_fetch_assoc($result);
-                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
+                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\".\Users\Profile.php\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
                             if ($_SESSION["status"] == 'admin') {
                                 echo "<li class=\"nav-item dropdown\">
                            <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>

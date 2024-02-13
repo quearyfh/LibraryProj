@@ -14,7 +14,7 @@
 </head>
 
 <body class="text-bg-light">
-    <div class="well bg-dark text-white text-center">ADMIN ACCESS</div>
+    <div class="well bg-dark text-white text-center">Open from 8am - 5pm at 12345 Example St. IN</div>
     <div class="row row-eq-height">
         <div class="col-lg-1 text-center">
             <h2>This is A</h2>
@@ -55,50 +55,36 @@
             <div class="col-sm-2"></div>
 
             <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Home.php">Home</a></button>
+                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                        href="..\Home.php">Home</a></button>
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Catalog.php">Catalog</a></button>
+                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                        href="..\Catalog.php">Catalog</a></button>
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Checkout.php">Check Out</a></button>
+                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                        href="..\Checkout.php">Check Out</a></button>
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\ReturnBook.php">Return Books</a></button>
+                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                        href="..\ReturnBook.php">Return Books</a></button>
             </div>
             <div class="col-sm-2"></div>
         </div>
 
         <div class="vr"></div>
         <div class="container-fluid content-row">
-
-            <div class="row row-eq-height">
-                <div class="col-lg-4 vh-100">
-                    <div class="card">
-                        <div class="card-header bg-success">
-                            <h5 class="card-title text-center">Options</h5>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item text-center "> <a class="nav-link" href="AdminUsers.php">View
-                                    Users</a> </li>
-                            <li class="list-group-item text-center "> <a class="nav-link" href="AddUser.php">Add
-                                    Users</a></li>
-                        </ul>
-                    </div>
+            <div class="card">
+                <div class="card-header bg-success">
+                    <h5 class="card-title text-center">Your Current Information</h5>
                 </div>
-
-                <div class="col-lg-8 vh-100">
-                    <div class="card">
-                        <div class="card-header bg-success">
-                            <h5 class="card-title text-center">Results Found</h5>
-                        </div>
-                        <div class="card-body text-center">
-                            <?php
-                            $ucard = $_GET['ucard'];
+                <div class="card-body text-center">
+                    <?php
                             $sql = "select * from member where ucard = $ucard";
                             echo "
                         <form name =\"UpdateUser\" method= \"post\" action= \"UpdateUser.php?ucard=$ucard\">
-                            <h3> Change the field you would like to update</h3>";
+                            <h5> Change the field you would like to update</h5>";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 $row = mysqli_fetch_assoc($result);
@@ -117,7 +103,7 @@
                             </p>
 
                             <p>Ucard Number:<br>
-                            <input type=\"number\" name=\"ucard\" value='" . $row['Ucard'] . "'required>
+                            <input type=\"number\" name=\"ucard\" value='" . $row['Ucard'] . "'required disabled>
                             </p>
 
                             <p>Phone:<br>
@@ -129,20 +115,20 @@
                             </p>
 
                             <p>Status:<br>
-                            <input type=\"text\" name=\"status\" value='" . $row['status'] . "'required>
+                            <input type=\"text\" name=\"status\" value='" . $row['status'] . "'disabled>
                             </p>
                             ";
                             ?>
 
-                            <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Change
-                                User</button>
-                            <br>
-                            </form>
-                        </div>
-                    </div>
+                    <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Change
+                        User</button>
+                    <br>
+                    </form>
                 </div>
             </div>
+
         </div>
+    </div>
 
 
 
