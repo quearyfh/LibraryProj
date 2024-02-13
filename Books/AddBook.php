@@ -58,10 +58,10 @@
             <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Catalog.php">Catalog</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="#">Check Out</a></button>
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Checkout.php">Check Out</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="#">Return Books</a></button>
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\ReturnBook.php">Return Books</a></button>
         </div>
         <div class="col-sm-2"></div>
     </div>
@@ -90,27 +90,27 @@
                     <div class="card-body text-center">  
                         <form name ="CreateBook" method= "post" action= "createBook.php">
                             <p>Title:<br>
-                            <input type="text" name="title">
+                            <input type="text" name="title" required>
                             </p>
 
                             <p>Author:<br>
-                            <input type="text" name="author">
+                            <input type="text" name="author" required>
                             </p>
 
                             <p>ISBN:<br>
-                            <input type="number" name="ISBN">
+                            <input type="number" name="ISBN" required>
                             </p>
 
                             <p>Copies:<br>
-                            <input type="number" name="copies">
+                            <input type="number" name="copies" required>
                             </p>
 
                             <p>Genre:<br>
-                            <input type="text" name="genre">
+                            <input type="text" name="genre" required>
                             </p>
 
                             <p>Image Name:<br>
-                            <input type="text" name="img">
+                            <input type="text" name="img" required>
                             </p>
 
                             <!-- <p>Image File:<br>

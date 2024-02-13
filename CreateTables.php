@@ -1,7 +1,7 @@
 <?php
-    include("Connection.php");
+include("Connection.php");
 
-    $sql="Create Table member(
+$sql = "Create Table member(
         fname varchar(20) NOT NULL,
         lname varchar(20) NOT NULL,
         Ucard int primary key,
@@ -10,14 +10,14 @@
         status varchar(10)
     );";
 
-    $sql .="Create Table book(
+$sql .= "Create Table book(
         title varchar(35) NOT NULL,
         author varchar(30) NOT NULL,
         ISBN int primary key,
         copies int NOT NULL
     );";
 
-    $sql .= "create table reserve(
+$sql .= "create table reserve(
         Ucard int,
         ISBN int,
         dateborrowed date,
@@ -25,12 +25,11 @@
         constraint fk_st foreign key (ISBN) references book(ISBN)
     );";
 
-    // I only ran this file once to make all my tables
-    if (mysqli_multi_query($conn, $sql)){
-        echo "";
-        echo "Table sucessfully created";
-    }
-    else{
-        echo "error creating Table";
-    }
+// I only ran this file once to make all my tables
+if (mysqli_multi_query($conn, $sql)) {
+    echo "";
+    echo "Table sucessfully created";
+} else {
+    echo "error creating Table";
+}
 ?>
