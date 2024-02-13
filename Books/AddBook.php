@@ -90,27 +90,27 @@
                     <div class="card-body text-center">  
                         <form name ="CreateBook" method= "post" action= "createBook.php">
                             <p>Title:<br>
-                            <input type="text" name="title">
+                            <input type="text" name="title" required>
                             </p>
 
                             <p>Author:<br>
-                            <input type="text" name="author">
+                            <input type="text" name="author" required>
                             </p>
 
                             <p>ISBN:<br>
-                            <input type="number" name="ISBN">
+                            <input type="number" name="ISBN" required>
                             </p>
 
                             <p>Copies:<br>
-                            <input type="number" name="copies">
+                            <input type="number" name="copies" required>
                             </p>
 
                             <p>Genre:<br>
-                            <input type="text" name="genre">
+                            <input type="text" name="genre" required>
                             </p>
 
                             <p>Image Name:<br>
-                            <input type="text" name="img">
+                            <input type="text" name="img" required>
                             </p>
 
                             <!-- <p>Image File:<br>

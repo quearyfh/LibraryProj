@@ -107,27 +107,27 @@
                             }
                             echo "
                             <p>Title:<br>
-                            <input type=\"text\" name=\"title\" value='" . $row['title'] . "'>
+                            <input type=\"text\" name=\"title\" value='" . $row['title'] . "'required>
                             </p>
 
                             <p>Author:<br>
-                            <input type=\"text\" name=\"author\" value='" . $row['author'] . "'>
+                            <input type=\"text\" name=\"author\" value='" . $row['author'] . "'required>
                             </p>
 
                             <p>ISBN:<br>
-                            <input type=\"number\" name=\"ISBN\" value='" . $row['ISBN'] . "'>
+                            <input type=\"number\" name=\"ISBN\" value='" . $row['ISBN'] . "'required>
                             </p>
 
                             <p>Copies:<br>
-                            <input type=\"number\" name=\"copies\" value='" . $row['copies'] . "'>
+                            <input type=\"number\" name=\"copies\" value='" . $row['copies'] . "'required>
                             </p>
 
                             <p>Genre:<br>
-                            <input type=\"text\" name=\"genre\" value='" . $row['genre'] . "'>
+                            <input type=\"text\" name=\"genre\" value='" . $row['genre'] . "'required>
                             </p>
 
                             <p>Image Name:<br>
-                            <input type=\"text\" name=\"img\" value='" . $row['img'] . "'>
+                            <input type=\"text\" name=\"img\" value='" . $row['img'] . "'required>
                             </p>
 
                             

@@ -11,16 +11,13 @@ if (mysqli_num_rows($result) > 0) {
     $_SESSION["ucard"] = $ucard;
     if ($row["status"] != 'User') {
         $_SESSION["status"] = 'admin';
-        // header("refresh:0.2; url=..\Home.php");
     } else {
         $_SESSION["status"] = 'member';
-        // header("refresh:0.2; url=..\Home.php");
     }
     $_SESSION["ucard"] = $ucard;
-    header("refresh:0.2; url=..\Home.php");
+    header("refresh:0; url=..\Home.php");
 } else {
-    echo "<h1> Your Login Information is incorrect</h1>";
-    header("refresh:0.5; url=..\Login.php");
+    echo "<script type=\"text/javascript\"> alert(\"Your Login Information is incorrect!\"); </script>";
+    header("refresh:0; url=..\Login.php");
 }
 
-?>

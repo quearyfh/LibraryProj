@@ -40,23 +40,23 @@
                     <div class="card-body text-center">
                         <form name="CreateUser" method="post" action=".\Users\createUser.php">
                             <p>First name:<br>
-                                <input type="text" name="fname">
+                                <input type="text" name="fname" required>
                             </p>
 
                             <p>Last name:<br>
-                                <input type="text" name="lname">
+                                <input type="text" name="lname" required>
                             </p>
 
                             <p>Email:<br>
-                                <input type="text" name="email">
+                                <input type="text" name="email" required>
                             </p>
 
                             <p>Phone Number:<br>
-                                <input type="number" name="phone">
+                                <input type="number" name="phone" required>
                             </p>
 
                             <p>Address:<br>
-                                <input type="text" name="address">
+                                <input type="text" name="address" required>
                             </p>
 
                             <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Sign

@@ -14,5 +14,5 @@ mysqli_query($conn, $sql);
 
 if (mysqli_query($conn, $sql)) {
     echo "<script type=\"text/javascript\"> alert(\"The book has been returned!\"); </script>";
-    header("refresh:0.2; url=ReturnBook.php");
+    header("refresh:0; url=ReturnBook.php");
 }

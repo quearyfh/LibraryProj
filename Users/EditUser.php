@@ -105,31 +105,31 @@
                             }
                             echo "
                             <p>First Name:<br>
-                            <input type=\"text\" name=\"fname\" value='" . $row['fname'] . "'>
+                            <input type=\"text\" name=\"fname\" value='" . $row['fname'] . "'required>
                             </p>
 
                             <p>Last Name:<br>
-                            <input type=\"text\" name=\"lname\" value='" . $row['lname'] . "'>
+                            <input type=\"text\" name=\"lname\" value='" . $row['lname'] . "'required>
                             </p>
 
                             <p>Email:<br>
-                            <input type=\"text\" name=\"email\" value='" . $row['email'] . "'>
+                            <input type=\"text\" name=\"email\" value='" . $row['email'] . "'required>
                             </p>
 
                             <p>Ucard Number:<br>
-                            <input type=\"number\" name=\"ucard\" value='" . $row['Ucard'] . "'>
+                            <input type=\"number\" name=\"ucard\" value='" . $row['Ucard'] . "'required>
                             </p>
 
                             <p>Phone:<br>
-                            <input type=\"number\" name=\"phone\" value='" . $row['Phone'] . "'>
+                            <input type=\"number\" name=\"phone\" value='" . $row['Phone'] . "'required>
                             </p>
 
                             <p>Address:<br>
-                            <input type=\"text\" name=\"address\" value='" . $row['address'] . "'>
+                            <input type=\"text\" name=\"address\" value='" . $row['address'] . "'required>
                             </p>
 
                             <p>Status:<br>
-                            <input type=\"text\" name=\"status\" value='" . $row['status'] . "'>
+                            <input type=\"text\" name=\"status\" value='" . $row['status'] . "'required>
                             </p>
                             ";
                             ?>
