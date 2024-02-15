@@ -103,7 +103,7 @@
                             </p>
 
                             <p><b>Author:</b><br>
-                                <input type="text" name="author" required>
+                                <input type="text" name="author" required  onkeydown="return /[a-zA-Z]/i.test(event.key)">
                             </p>
 
                             <p><b>ISBN:</b><br>
@@ -115,7 +115,7 @@
                             </p>
 
                             <p><b>Genre:</b><br>
-                                <input type="text" name="genre" required>
+                                <input type="text" name="genre" required onkeydown="return /[a-zA-Z]/i.test(event.key)">
                             </p>
 
                             <p><b>Image Name:</b><br>

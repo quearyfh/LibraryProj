@@ -40,11 +40,11 @@
                     <div class="card-body text-center">
                         <form name="SubmitUser" method="post" action=".\Users\CheckUser.php">
                             <p>Ucard Number:<br>
-                                <input type="number" name="ucard" required>
+                                <input type="number" name="ucard" required >
                             </p>
 
                             <p>Last Four Digits of Phone Number:<br>
-                                <input type="number" name="phone" required>
+                                <input type="number" maxlength="4" name="phone" required >
                             </p>
 
                             <button type="submit"

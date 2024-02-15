@@ -102,7 +102,6 @@
                                     <h5 class=\"card-title\">" . $row["title"] . "</h5>
                                     <p class=\"card-text\"><b>Author: </b>" . $row["author"] . "</p>
                                     <p class=\"card-text\"><b>ISBN: </b>" . $ISBN . "</p>
-                                    <p class=\"card-text\"><b>Copies: </b>" . $row["copies"] . "</p>
                                     <p class=\"card-text\"><b>Genre: </b>" . $row["genre"] . "</p>
                                     <p class=\"card-text\"><b>Check Out For: </b>
                                     <form method=\"POST\" action=\"CheckedOut.php?ISBN=$ISBN\">
@@ -121,9 +120,13 @@
                                     
                                     </div>
                                     </p>
+                                    <div class=\"col\">
                                     
                                     <button type=\"submit\" class=\"btn btn-sm btn-success text-center\">Confirm Checkout</button>
                                     </form>
+                                    <button type=\"button\" class=\"btn btn-sm btn-success text-center\"><a class=\"nav-link\"
+                                    href=\"RemoveCart.php?ISBN=$ISBN\"> Remove From Cart</button>
+                                    </div> 
                                 </div>
                                 </div>
                                 </div>

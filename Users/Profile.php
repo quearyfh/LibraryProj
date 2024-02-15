@@ -94,15 +94,15 @@
                             }
                             echo "
                             <p><b>First Name:</b><br>
-                            <input type=\"text\" name=\"fname\" value='" . $row['fname'] . "'required>
+                            <input type=\"text\" name=\"fname\" value='" . $row['fname'] . "'required onkeydown=\"return /[a-zA-Z]/i.test(event.key)\">
                             </p>
 
                             <p><b>Last Name:</b><br>
-                            <input type=\"text\" name=\"lname\" value='" . $row['lname'] . "'required>
+                            <input type=\"text\" name=\"lname\" value='" . $row['lname'] . "'required  onkeydown=\"return /[a-zA-Z]/i.test(event.key)\">
                             </p>
 
                             <p><b>Email:</b><br>
-                            <input type=\"text\" name=\"email\" value='" . $row['email'] . "'required>
+                            <input type=\"text\" name=\"email\" value='" . $row['email'] . "'required >
                             </p>
 
                             <p><b>Ucard Number:</b><br>

@@ -89,9 +89,11 @@
                 </div>
 
                 <div class="col-lg-8 vh-100">
-                    <div class="card bg-success">
+                    <div class="card ">
                         <div class="card-header bg-success">
                             <h5 class="card-title text-center text-white">Results Found</h5>
+                        </div>
+                        <div class="card-body">
                             <?php
                             $sql = "select * from book";
                             $result = mysqli_query($conn, $sql);
@@ -121,7 +123,6 @@
                             }
                             ?>
                         </div>
-                        <div class="card-body">
                         </div>
                     </div>
                 </div>

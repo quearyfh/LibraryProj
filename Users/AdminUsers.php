@@ -93,7 +93,7 @@
             </div>
 
             <div class="col-lg-8 vh-100">
-                <div class="card bg-success">
+                <div class="card ">
                     <div class="card-header bg-success">
                         <h5 class="card-title text-center text-white ">Results Found</h5>
                     </div>

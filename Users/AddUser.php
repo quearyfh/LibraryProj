@@ -100,11 +100,11 @@
                     <div class="card-body text-center">
                         <form name="CreateUser" method="post" action="createUser.php">
                             <p><b>First name:</b><br>
-                                <input type="text" name="fname" required>
+                                <input type="text" name="fname" required onkeydown="return /[a-zA-Z]/i.test(event.key)">
                             </p>
 
                             <p><b>Last name:</b><br>
-                                <input type="text" name="lname" required>
+                                <input type="text" name="lname" required required onkeydown="return /[a-zA-Z]/i.test(event.key)">
                             </p>
 
                             <p><b>Email:</b><br>
