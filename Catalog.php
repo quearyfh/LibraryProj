@@ -111,9 +111,9 @@
                         <?php
                         if (!empty($_GET)) {
                             $Genre = $_GET['Genre'];
-                            $sql = "select * from book where genre='$Genre' and copies>0";
+                            $sql = "select * from book where genre='$Genre'";
                         } else {
-                            $sql = "select * from book where copies>0";
+                            $sql = "select * from book";
                         }
                         $result = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($result) > 0) {
@@ -130,9 +130,14 @@
                             <p class=\"card-text\"><b>Author: </b>" . $row["author"] . "</p>
                             <p class=\"card-text\"><b>ISBN: </b>" . $row["ISBN"] . "</p>
                             <p class=\"card-text\"><b>Copies: </b>" . $row["copies"] . "</p>
-                            <p class=\"card-text\"><b>Genre: </b>" . $row["genre"] . "</p>
-                            <button type=\"button\" class=\"btn btn-sm btn-success text-center\"> <a class=\"nav-link\" href=\"AddtoCart.php?ISBN=$ISBN
-                            \">Add to Check Out</a></button>
+                            <p class=\"card-text\"><b>Genre: </b>" . $row["genre"] . "</p>";
+                            if($row["copies"] !=0){
+                            echo "<button type=\"button\" class=\"btn btn-sm btn-success text-center\"> <a class=\"nav-link\" href=\"AddtoCart.php?ISBN=$ISBN
+                            \">Add to Check Out</a></button>";
+                            }else{
+                                echo "<button type=\"button\" class=\"btn btn-sm btn-success text-center disables\">Currently Out of Stock </button>";
+                            }
+                        echo"
                         </div>
                         </div>
                         </div>

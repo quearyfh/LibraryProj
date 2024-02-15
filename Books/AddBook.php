@@ -99,27 +99,27 @@
                     <div class="card-body text-center">
                         <form name="CreateBook" method="post" action="createBook.php">
                             <p><b>Title:</b><br>
-                                <input type="text" name="title" required>
+                                <input type="text" name="title" minlength="2" required>
                             </p>
 
                             <p><b>Author:</b><br>
-                                <input type="text" name="author" required  onkeydown="return /[a-zA-Z]/i.test(event.key)">
+                                <input type="text" name="author"  minlength="2" required  onkeydown="return /[a-zA-Z]/i.test(event.key)">
                             </p>
 
                             <p><b>ISBN:</b><br>
-                                <input type="number" name="ISBN" required>
+                                <input type="text" name="ISBN" pattern="[0-9]{13}" required>
                             </p>
 
                             <p><b>Copies:</b><br>
-                                <input type="number" name="copies" required>
+                                <input type="number" name="copies" required min="1">
                             </p>
 
                             <p><b>Genre:</b><br>
-                                <input type="text" name="genre" required onkeydown="return /[a-zA-Z]/i.test(event.key)">
+                                <input type="text" name="genre"  minlength="2" required onkeydown="return /[a-zA-Z]/i.test(event.key)">
                             </p>
 
                             <p><b>Image Name:</b><br>
-                                <input type="text" name="img" required>
+                                <input type="text" name="img" minlength="2" required>
                             </p>
 
                             <!-- <p>Image File:<br>

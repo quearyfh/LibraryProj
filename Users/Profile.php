@@ -92,17 +92,18 @@
                             if (mysqli_num_rows($result) > 0) {
                                 $row = mysqli_fetch_assoc($result);
                             }
+                            
                             echo "
                             <p><b>First Name:</b><br>
-                            <input type=\"text\" name=\"fname\" value='" . $row['fname'] . "'required onkeydown=\"return /[a-zA-Z]/i.test(event.key)\">
+                            <input type=\"text\" name=\"fname\"  minlength=\"2\" value='" . $row['fname'] . "'required onkeydown=\"return /[a-zA-Z]/i.test(event.key)\">
                             </p>
 
                             <p><b>Last Name:</b><br>
-                            <input type=\"text\" name=\"lname\" value='" . $row['lname'] . "'required  onkeydown=\"return /[a-zA-Z]/i.test(event.key)\">
+                            <input type=\"text\" name=\"lname\"  minlength=\"2\" value='" . $row['lname'] . "'required  onkeydown=\"return /[a-zA-Z]/i.test(event.key)\">
                             </p>
 
                             <p><b>Email:</b><br>
-                            <input type=\"text\" name=\"email\" value='" . $row['email'] . "'required >
+                            <input type=\"text\" name=\"email\"  minlength=\"2\" value='" . $row['email'] . "'required >
                             </p>
 
                             <p><b>Ucard Number:</b><br>
@@ -110,21 +111,23 @@
                             </p>
 
                             <p><b>Phone:</b><br>
-                            <input type=\"number\" name=\"phone\" value='" . $row['Phone'] . "'required>
+                            <input type=\"text\" name=\"phone\" pattern=\"[1-0]{1}[0-9]{9}\" value='" . $row['Phone'] . "'required>
                             </p>
 
                             <p><b>Address:</b><br>
-                            <input type=\"text\" name=\"address\" value='" . $row['address'] . "'required>
+                            <input type=\"text\" name=\"address\"  minlength=\"2\" value='" . $row['address'] . "'required>
                             </p>
 
                             <p><b>Status:</b><br>
-                            <input type=\"text\" name=\"status\" value='" . $row['status'] . "'disabled>
+                            <input type=\"text\" name=\"status\" minlength=\"2\" value='" . $row['status'] . "'disabled>
                             </p>
                             ";
                             ?>
 
-                <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Change
-                    User</button>
+                    <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Change
+                    Profile</button> <br><br>
+                    <h4>No longer want to be a member? </h4>
+                    <button type="button" class="btn btn-md btn-success rounded-0 border border-dark"><a class="nav-link" href="DeleteUser.php?ucard=$ucard">Delete Account</a></button>
                 <br>
                 </form>
             </div>

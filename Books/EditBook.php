@@ -112,27 +112,27 @@
                             }
                             echo "
                             <p><b>Title:</b><br>
-                            <input type=\"text\" name=\"title\" value='" . $row['title'] . "'required>
+                            <input type=\"text\" name=\"title\" required min=\"2\" value='" . $row['title'] . "'required>
                             </p>
 
                             <p><b>Author:</b><br>
-                            <input type=\"text\" name=\"author\" value='" . $row['author'] . "'required onkeydown=\"return /[a-zA-Z]/i.test(event.key)\">
+                            <input type=\"text\" name=\"author\" required min=\"2\" value='" . $row['author'] . "'required onkeydown=\"return /[a-zA-Z]/i.test(event.key)\">
                             </p>
 
                             <p><b>ISBN:</b><br>
-                            <input type=\"number\" name=\"ISBN\" value='" . $row['ISBN'] . "'required>
+                            <input type=\"text\" name=\"ISBN\" pattern=\"[0-9]{13}\"  value='" . $row['ISBN'] . "' required>
                             </p>
 
                             <p><b>Copies:</b><br>
-                            <input type=\"number\" name=\"copies\" value='" . $row['copies'] . "'required>
+                            <input type=\"number\" name=\"copies\" value='" . $row['copies'] . "'required min=\"1\">
                             </p>
 
                             <p><b>Genre:</b><br>
-                            <input type=\"text\" name=\"genre\" value='" . $row['genre'] . "'required onkeydown=\"return /[a-zA-Z]/i.test(event.key)\">
+                            <input type=\"text\" name=\"genre\"  required min=\"2\" value='" . $row['genre'] . "'required onkeydown=\"return /[a-zA-Z]/i.test(event.key)\">
                             </p>
 
                             <p><b>Image Name:</b><br>
-                            <input type=\"text\" name=\"img\" value='" . $row['img'] . "'required>
+                            <input type=\"text\" name=\"img\"  required min=\"2\" value='" . $row['img'] . "'required>
                             </p>
 
                             
