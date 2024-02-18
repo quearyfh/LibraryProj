@@ -35,28 +35,28 @@
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-header bg-success">
-                        <h5 class="card-title text-center">Login</h5>
+                        <h5 class="card-title text-center">Sign Up</h5>
                     </div>
                     <div class="card-body text-center">
                         <form name="CreateUser" method="post" action=".\Users\createUser.php">
                             <p>First name:<br>
-                                <input type="text" name="fname" required>
+                                <input type="text" name="fname" required minlength="2" onkeydown="return /[a-zA-Z]/i.test(event.key)">
                             </p>
 
                             <p>Last name:<br>
-                                <input type="text" name="lname" required>
+                                <input type="text" name="lname" required minlength="2" onkeydown="return /[a-zA-Z]/i.test(event.key)">
                             </p>
 
                             <p>Email:<br>
-                                <input type="text" name="email" required>
+                                <input type="text" name="email" required minlength="8" onkeydown="return /[a-zA-Z0-9@]/i.test(event.key)">
                             </p>
 
                             <p>Phone Number:<br>
-                                <input type="number" name="phone" required>
+                                <input type="text" name="phone" pattern="[1-0]{1}[0-9]{9}" required>
                             </p>
 
                             <p>Address:<br>
-                                <input type="text" name="address" required>
+                                <input type="text" name="address" minlength="2" required onkeydown="return /[a-zA-Z0-9]/i.test(event.key)">
                             </p>
 
                             <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Sign

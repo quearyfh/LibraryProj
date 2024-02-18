@@ -32,7 +32,7 @@
                             $sql = "select * from member where ucard = '$ucard'";
                             $result = mysqli_query($conn, $sql);
                             $row = mysqli_fetch_assoc($result);
-                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
+                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"..\Users\Profile.php\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
                             if ($_SESSION["status"] == 'admin') {
                                 echo "<li class=\"nav-item dropdown\">
                            <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>
@@ -49,56 +49,61 @@
                 </div>
             </nav>
         </div>
-        <div class="well bg-dark "> . </div>
-        <div class="vr"></div>
-        <div class="row">
-            <div class="col-sm-2"></div>
+    </div>
+    <div class="well bg-dark "> . </div>
+    <div class="vr"></div>
+    <div class="row">
+        <div class="col-sm-2"></div>
 
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Home.php">Home</a></button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Catalog.php">Catalog</a></button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Checkout.php">Check Out</a></button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\ReturnBook.php">Return Books</a></button>
-            </div>
-            <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\Home.php">Home</a></button>
         </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\Catalog.php">Catalog</a></button>
+        </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\Checkout.php">Check Out</a></button>
+        </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\ReturnBook.php">Return Books</a></button>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
 
-        <div class="vr"></div>
-        <div class="container-fluid content-row">
+    <div class="vr"></div>
+    <div class="container-fluid content-row">
 
-            <div class="row row-eq-height">
-                <div class="col-lg-4 vh-100">
-                    <div class="card">
-                        <div class="card-header bg-success">
-                            <h5 class="card-title text-center">Options</h5>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item text-center "> <a class="nav-link" href="AdminBook.php">View
-                                    Books</a> </li>
-                            <li class="list-group-item text-center "> <a class="nav-link" href="AddBook.php">Add
-                                    Book</a></li>
-                        </ul>
+        <div class="row row-eq-height">
+            <div class="col-lg-4 vh-100">
+                <div class="card">
+                    <div class="card-header bg-success">
+                        <h5 class="card-title text-center text-white">Options</h5>
                     </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-center "> <a class="nav-link" href="AdminBook.php">View
+                                Books</a> </li>
+                        <li class="list-group-item text-center "> <a class="nav-link" href="AddBook.php">Add
+                                Book</a></li>
+                    </ul>
                 </div>
+            </div>
 
-                <div class="col-lg-8 vh-100">
-                    <div class="card">
-                        <div class="card-header bg-success">
-                            <h5 class="card-title text-center">Results Found</h5>
-                        </div>
-                        <div class="card-body text-center">
-                            <?php
+            <div class="col-lg-8 vh-100">
+                <div class="card">
+                    <div class="card-header bg-success">
+                        <h5 class="card-title text-center text-white">Results Found</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <?php
                             $ISBN = $_GET['ISBN'];
                             $sql = "select * from book where ISBN = $ISBN";
                             echo "
                         <form name =\"UpdateBook\" method= \"post\" action= \"UpdateBook.php?ISBN=$ISBN\">
-                            <h3> Change the field you would like to update</h3>
+                            <h5> Change the field you would like to update</h5><br>
                             ";
                             $sql = "select * from book where ISBN = $ISBN";
                             $result = mysqli_query($conn, $sql);
@@ -106,46 +111,46 @@
                                 $row = mysqli_fetch_assoc($result);
                             }
                             echo "
-                            <p>Title:<br>
-                            <input type=\"text\" name=\"title\" value='" . $row['title'] . "'required>
+                            <p><b>Title:</b><br>
+                            <input type=\"text\" name=\"title\" required min=\"2\" value='" . $row['title'] . "'required>
                             </p>
 
-                            <p>Author:<br>
-                            <input type=\"text\" name=\"author\" value='" . $row['author'] . "'required>
+                            <p><b>Author:</b><br>
+                            <input type=\"text\" name=\"author\" required min=\"2\" value='" . $row['author'] . "'required onkeydown=\"return /[a-zA-Z]/i.test(event.key)\">
                             </p>
 
-                            <p>ISBN:<br>
-                            <input type=\"number\" name=\"ISBN\" value='" . $row['ISBN'] . "'required>
+                            <p><b>ISBN:</b><br>
+                            <input type=\"text\" name=\"ISBN\" pattern=\"[0-9]{13}\"  value='" . $row['ISBN'] . "' required>
                             </p>
 
-                            <p>Copies:<br>
-                            <input type=\"number\" name=\"copies\" value='" . $row['copies'] . "'required>
+                            <p><b>Copies:</b><br>
+                            <input type=\"number\" name=\"copies\" value='" . $row['copies'] . "'required min=\"1\">
                             </p>
 
-                            <p>Genre:<br>
-                            <input type=\"text\" name=\"genre\" value='" . $row['genre'] . "'required>
+                            <p><b>Genre:</b><br>
+                            <input type=\"text\" name=\"genre\"  required min=\"2\" value='" . $row['genre'] . "'required onkeydown=\"return /[a-zA-Z]/i.test(event.key)\">
                             </p>
 
-                            <p>Image Name:<br>
-                            <input type=\"text\" name=\"img\" value='" . $row['img'] . "'required>
+                            <p><b>Image Name:</b><br>
+                            <input type=\"text\" name=\"img\"  required min=\"2\" value='" . $row['img'] . "'required>
                             </p>
 
                             
                             ";
                             ?>
-                            <!-- <p>Image File:<br>
+                        <!-- <p>Image File:<br>
                              <input type=\"file\" id=\"myFile\" name=\"imgfile\">
                             </p> -->
 
-                            <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Change
-                                Book</button>
-                            <br>
-                            </form>
-                        </div>
+                        <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Change
+                            Book</button>
+                        <br>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 
 

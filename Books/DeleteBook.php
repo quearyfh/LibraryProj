@@ -11,5 +11,3 @@ if (mysqli_query($conn, $sql)) {
     echo "<script type=\"text/javascript\"> alert(\"The book has NOT been removed!\"); </script>";
     header("refresh:0.2; url=AdminBook.php");
 }
-
-?>

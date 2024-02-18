@@ -22,7 +22,7 @@
         <div class="col-lg-3 text-left text-success">
             <h1>Library</h1>
         </div>
-        <div class="col-lg-3 ms-auto text-end">
+        <div class="col-lg-4 ms-auto text-end">
             <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse" id="collapsibleNavbar">
@@ -32,7 +32,7 @@
                             $sql = "select * from member where ucard = '$ucard'";
                             $result = mysqli_query($conn, $sql);
                             $row = mysqli_fetch_assoc($result);
-                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
+                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\".\Users\Profile.php\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
                             if ($_SESSION["status"] == 'admin') {
                                 echo "<li class=\"nav-item dropdown\">
                                 <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>
@@ -55,16 +55,20 @@
     <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="Home.php">Home</a></button>
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="Home.php">Home</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="Catalog.php">Catalog</a></button>
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="Catalog.php">Catalog</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="Checkout.php">Check Out</a></button>
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="Checkout.php">Check Out</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="ReturnBook.php">Return Books</a></button>
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="ReturnBook.php">Return Books</a></button>
         </div>
         <div class="col-sm-2"></div>
     </div>
@@ -89,51 +93,52 @@
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $ISBN=$row["ISBN"];
                                 echo "<div class=\"card mb-3\" style=\"max-width: 540px;\">";
-                                echo "<div class=\"row g-0\">";
-                                echo "<div class=\"col-md-4\">
-                                <img src=\".\Books\bookpic\\" . $row["img"] . "\" class=\"card-img-top\" alt=\"BookImage\">
-                                </div>
-                                <div class=\"col-md-8\">
-                                <div class=\"card-body\">
-                                    <h5 class=\"card-title\">" . $row["title"] . "</h5>
-                                    <p class=\"card-text\"><b>Author: </b>" . $row["author"] . "</p>
-                                    <p class=\"card-text\"><b>ISBN: </b>" . $ISBN . "</p>
-                                    <p class=\"card-text\"><b>Copies: </b>" . $row["copies"] . "</p>
-                                    <p class=\"card-text\"><b>Genre: </b>" . $row["genre"] . "</p>
-                                    <p class=\"card-text\"><b>Check Out For: </b>
-                                    <form method=\"POST\" action=\"CheckedOut.php?ISBN=$ISBN\">
-                                    <div class=\"form-check\">
-                                    <input class=\"form-check-input\" type=\"radio\" name=\"returndate\" value=\"1\" checked>
-                                    <label class=\"form-check-label\" for=\"flexRadioDefault1\">
-                                        1 week
-                                    </label>
+                                    echo "<div class=\"row g-0\">";
+                                        echo "<div class=\"col-md-4\">
+                                                <img src=\".\Books\bookpic\\" . $row["img"] . "\" class=\"card-img-top\" alt=\"BookImage\">
+                                               </div>
+                                                <div class=\"col-md-8\">
+                                                    <div class=\"card-body\">
+                                                        <h5 class=\"card-title\">" . $row["title"] . "</h5>
+                                                        <p class=\"card-text\"><b>Author: </b>" . $row["author"] . "</p>
+                                                        <p class=\"card-text\"><b>ISBN: </b>" . $ISBN . "</p>
+                                                        <p class=\"card-text\"><b>Genre: </b>" . $row["genre"] . "</p>
+                                                        <p class=\"card-text\"><b>Check Out For: </b>
+                                                        <form method=\"POST\" action=\"CheckedOut.php?ISBN=$ISBN\">
+                                                            <div class=\"form-check\">
+                                                                <input class=\"form-check-input\" type=\"radio\" name=\"returndate\" value=\"1\" checked>
+                                                                <label class=\"form-check-label\" for=\"flexRadioDefault1\">
+                                                                    1 week
+                                                                </label>
+                                                            </div>
+                                    
+                                                            <div class=\"form-check\">
+                                                                <input class=\"form-check-input\" type=\"radio\" name=\"returndate\" value=\"4\" >
+                                                                <label class=\"form-check-label\" for=\"flexRadioDefault2\">
+                                                                    4 weeks
+                                                                </label>
+                                                            </div>
+                                                    
+                                                            <button type=\"submit\" class=\"btn btn-sm btn-success text-center\">Confirm Checkout</button>
+                                                            <button type=\"button\" class=\"btn btn-sm btn-success text-center\"><a class=\"nav-link\" href=\"RemoveCart.php?ISBN=$ISBN\"> Remove From Cart</button>
+                                                        </form>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                        </div>
                                     </div>
-                                    
-                                    <div class=\"form-check\">
-                                    <input class=\"form-check-input\" type=\"radio\" name=\"returndate\" value=\"4\" >
-                                    <label class=\"form-check-label\" for=\"flexRadioDefault2\">
-                                        4 weeks
-                                    </label>
-                                    
-                                    </div>
-                                    </p>
-                                    
-                                    <button type=\"submit\" class=\"btn btn-sm btn-success text-center\">Confirm Checkout</button>
-                                    </form>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
+                                
                                 ";
                             }
                         }else{
                             echo "<p class=\"card-text text-center\"> You currently have no books in your check out.</p>";
                         }
                         ?>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 </body>

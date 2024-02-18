@@ -1,1 +1,2 @@
 The two example files are an html and php file. We will be using Php, Html, mySql to 
+https://www.codexworld.com/how-to/allow-only-alphabets-in-html-text-input/ 

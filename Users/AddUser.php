@@ -32,7 +32,7 @@
                             $sql = "select * from member where ucard = '$ucard'";
                             $result = mysqli_query($conn, $sql);
                             $row = mysqli_fetch_assoc($result);
-                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
+                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"Profile.php\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
                             if ($_SESSION["status"] == 'admin') {
                                 echo "<li class=\"nav-item dropdown\">
                            <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>
@@ -49,78 +49,83 @@
                 </div>
             </nav>
         </div>
-        <div class="well bg-dark "> . </div>
-        <div class="vr"></div>
-        <div class="row">
-            <div class="col-sm-2"></div>
+    </div>
+    <div class="well bg-dark "> . </div>
+    <div class="vr"></div>
+    <div class="row">
+        <div class="col-sm-2"></div>
 
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Home.php">Home</a></button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Catalog.php">Catalog</a></button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Checkout.php">Check Out</a></button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\ReturnBook.php">Return Books</a></button>
-            </div>
-            <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\Home.php">Home</a></button>
         </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\Catalog.php">Catalog</a></button>
+        </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\Checkout.php">Check Out</a></button>
+        </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\ReturnBook.php">Return Books</a></button>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
 
-        <div class="vr"></div>
-        <div class="container-fluid content-row">
+    <div class="vr"></div>
+    <div class="container-fluid content-row">
 
-            <div class="row row-eq-height">
-                <div class="col-lg-4 vh-100">
-                    <div class="card">
-                        <div class="card-header bg-success">
-                            <h5 class="card-title text-center">Options</h5>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item text-center "> <a class="nav-link" href="AdminUsers.php">View
-                                    Users</a> </li>
-                            <li class="list-group-item text-center "> <a class="nav-link" href="AddUser.php">Add
-                                    User</a></li>
-                        </ul>
+        <div class="row row-eq-height">
+            <div class="col-lg-4 vh-100">
+                <div class="card">
+                    <div class="card-header bg-success">
+                        <h5 class="card-title text-center text-white">Options</h5>
                     </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-center "> <a class="nav-link" href="AdminUsers.php">View
+                                Users</a> </li>
+                        <li class="list-group-item text-center "> <a class="nav-link" href="AddUser.php">Add
+                                User</a></li>
+                    </ul>
                 </div>
+            </div>
 
-                <div class="col-lg-8 vh-100">
-                    <div class="card">
-                        <div class="card-header bg-success">
-                            <h5 class="card-title text-center">Results Found</h5>
-                        </div>
-                        <div class="card-body">
-                            <form name="CreateUser" method="post" action="createUser.php">
-                                <p>First name:<br>
-                                    <input type="text" name="fname" required>
-                                </p>
+            <div class="col-lg-8 vh-100">
+                <div class="card">
+                    <div class="card-header bg-success">
+                        <h5 class="card-title text-center text-white">Results Found</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <form name="CreateUser" method="post" action="createUser.php">
+                            <p><b>First name:</b><br>
+                                <input type="text" name="fname" required onkeydown="return /[a-zA-Z]/i.test(event.key)">
+                            </p>
 
-                                <p>Last name:<br>
-                                    <input type="text" name="lname" required>
-                                </p>
+                            <p><b>Last name:</b><br>
+                                <input type="text" name="lname" required required onkeydown="return /[a-zA-Z]/i.test(event.key)">
+                            </p>
 
-                                <p>Email:<br>
-                                    <input type="text" name="email" required>
-                                </p>
+                            <p><b>Email:</b><br>
+                                <input type="text" name="email" required>
+                            </p>
 
-                                <p>Phone Number:<br>
-                                    <input type="number" name="phone" required>
-                                </p>
+                            <p><b>Phone Number:</b><br>
+                                <input type="number" name="phone" max="9999999999"required>
+                            </p>
 
-                                <p>Address:<br>
-                                    <input type="text" name="address" required>
-                                </p>
+                            <p><b>Address:</b><br>
+                                <input type="text" name="address" required>
+                            </p>
 
-                                <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Add
-                                    User</button>
-                                <br>
-                        </div>
+                            <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Add
+                                User</button>
+                            <br>
                     </div>
                 </div>
             </div>
+        </div>
 
 
 

@@ -32,7 +32,7 @@
                             $sql = "select * from member where ucard = '$ucard'";
                             $result = mysqli_query($conn, $sql);
                             $row = mysqli_fetch_assoc($result);
-                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
+                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"Profile.php\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
                             if ($_SESSION["status"] == 'admin') {
                                 echo "<li class=\"nav-item dropdown\">
                            <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>
@@ -49,100 +49,105 @@
                 </div>
             </nav>
         </div>
-        <div class="well bg-dark "> . </div>
-        <div class="vr"></div>
-        <div class="row">
-            <div class="col-sm-2"></div>
+    </div>
+    <div class="well bg-dark "> . </div>
+    <div class="vr"></div>
+    <div class="row">
+        <div class="col-sm-2"></div>
 
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Home.php">Home</a></button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Catalog.php">Catalog</a></button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\Checkout.php">Check Out</a></button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="..\ReturnBook.php">Return Books</a></button>
-            </div>
-            <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\Home.php">Home</a></button>
         </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\Catalog.php">Catalog</a></button>
+        </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\Checkout.php">Check Out</a></button>
+        </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="..\ReturnBook.php">Return Books</a></button>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
 
-        <div class="vr"></div>
-        <div class="container-fluid content-row">
+    <div class="vr"></div>
+    <div class="container-fluid content-row">
 
-            <div class="row row-eq-height">
-                <div class="col-lg-4 vh-100">
-                    <div class="card">
-                        <div class="card-header bg-success">
-                            <h5 class="card-title text-center">Options</h5>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item text-center "> <a class="nav-link" href="AdminUsers.php">View
-                                    Users</a> </li>
-                            <li class="list-group-item text-center "> <a class="nav-link" href="AddUser.php">Add
-                                    Users</a></li>
-                        </ul>
+        <div class="row row-eq-height">
+            <div class="col-lg-4 vh-100">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="card-title text-center">Options</h5>
                     </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-center "> <a class="nav-link" href="AdminUsers.php">View
+                                Users</a> </li>
+                        <li class="list-group-item text-center "> <a class="nav-link" href="AddUser.php">Add
+                                Users</a></li>
+                    </ul>
                 </div>
+            </div>
 
-                <div class="col-lg-8 vh-100">
-                    <div class="card">
-                        <div class="card-header bg-success">
-                            <h5 class="card-title text-center">Results Found</h5>
-                        </div>
-                        <div class="card-body text-center">
-                            <?php
+            <div class="col-lg-8 vh-100">
+                <div class="card">
+                    <div class="card-header bg-success">
+                        <h5 class="card-title text-center text-white">Results Found</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <?php
                             $ucard = $_GET['ucard'];
                             $sql = "select * from member where ucard = $ucard";
                             echo "
                         <form name =\"UpdateUser\" method= \"post\" action= \"UpdateUser.php?ucard=$ucard\">
-                            <h3> Change the field you would like to update</h3>";
+                            <h5> Change the field you would like to update</h5><br>";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 $row = mysqli_fetch_assoc($result);
                             }
                             echo "
-                            <p>First Name:<br>
-                            <input type=\"text\" name=\"fname\" value='" . $row['fname'] . "'required>
+                            <p><b>First Name:</b><br>
+                            <input type=\"text\" name=\"fname\" minlength=\"2\" value='" . $row['fname'] . "'required required onkeydown=\"return /[a-zA-Z]/i.test(event.key)\">
                             </p>
 
-                            <p>Last Name:<br>
-                            <input type=\"text\" name=\"lname\" value='" . $row['lname'] . "'required>
+                            <p><b>Last Name:</b><br>
+                            <input type=\"text\" name=\"lname\" minlength=\"2\" value='" . $row['lname'] . "'required onkeydown=\"return /[a-zA-Z]/i.test(event.key)\">
                             </p>
 
-                            <p>Email:<br>
-                            <input type=\"text\" name=\"email\" value='" . $row['email'] . "'required>
+                            <p><b>Email:</b><br>
+                            <input type=\"text\" name=\"email\" minlength=\"2\" value='" . $row['email'] . "'required>
                             </p>
 
-                            <p>Ucard Number:<br>
-                            <input type=\"number\" name=\"ucard\" value='" . $row['Ucard'] . "'required>
+                            <p><b>Ucard Number:</b><br>
+                            <input type=\"text\" name=\"ucard\" pattern=\"[0-9]{7}\" value='" . $row['Ucard'] . "' required>
                             </p>
 
-                            <p>Phone:<br>
-                            <input type=\"number\" name=\"phone\" value='" . $row['Phone'] . "'required>
+                            <p><b>Phone:</b><br>
+                            <input type=\"text\" name=\"phone\" pattern=\"[1-0]{1}[0-9]{9}\" required>
                             </p>
 
-                            <p>Address:<br>
-                            <input type=\"text\" name=\"address\" value='" . $row['address'] . "'required>
+                            <p><b>Address:</b><br>
+                            <input type=\"text\" name=\"address\"  minlength=\"2\" value='" . $row['address'] . "'required>
                             </p>
 
-                            <p>Status:<br>
+                            <p><b>Status:</b><br>
                             <input type=\"text\" name=\"status\" value='" . $row['status'] . "'required>
                             </p>
                             ";
                             ?>
 
-                            <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Change
-                                User</button>
-                            <br>
-                            </form>
-                        </div>
+                        <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Change
+                            User</button>
+                        <br>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 
 

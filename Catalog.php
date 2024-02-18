@@ -22,7 +22,7 @@
         <div class="col-lg-3 text-left text-success">
             <h1>Library</h1>
         </div>
-        <div class="col-lg-3 ms-auto text-end">
+        <div class="col-lg-4 ms-auto text-end">
             <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse" id="collapsibleNavbar">
@@ -32,7 +32,7 @@
                             $sql = "select * from member where ucard = '$ucard'";
                             $result = mysqli_query($conn, $sql);
                             $row = mysqli_fetch_assoc($result);
-                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
+                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\".\Users\Profile.php\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
                             if ($_SESSION["status"] == 'admin') {
                                 echo "<li class=\"nav-item dropdown\">
                            <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>
@@ -56,16 +56,20 @@
         <div class="col-sm-2"></div>
 
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="Home.php">Home</a></button>
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="Home.php">Home</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="Catalog.php">Catalog</a></button>
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="Catalog.php">Catalog</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="Checkout.php">Check Out</a></button>
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="Checkout.php">Check Out</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link" href="ReturnBook.php">Return Books</a></button>
+            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+                    href="ReturnBook.php">Return Books</a></button>
         </div>
         <div class="col-sm-2"></div>
     </div>
@@ -107,9 +111,9 @@
                         <?php
                         if (!empty($_GET)) {
                             $Genre = $_GET['Genre'];
-                            $sql = "select * from book where genre='$Genre' and copies>0";
+                            $sql = "select * from book where genre='$Genre'";
                         } else {
-                            $sql = "select * from book where copies>0";
+                            $sql = "select * from book";
                         }
                         $result = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($result) > 0) {
@@ -126,9 +130,14 @@
                             <p class=\"card-text\"><b>Author: </b>" . $row["author"] . "</p>
                             <p class=\"card-text\"><b>ISBN: </b>" . $row["ISBN"] . "</p>
                             <p class=\"card-text\"><b>Copies: </b>" . $row["copies"] . "</p>
-                            <p class=\"card-text\"><b>Genre: </b>" . $row["genre"] . "</p>
-                            <button type=\"button\" class=\"btn btn-sm btn-success text-center\"> <a class=\"nav-link\" href=\"AddtoCart.php?ISBN=$ISBN
-                            \">Add to Check Out</a></button>
+                            <p class=\"card-text\"><b>Genre: </b>" . $row["genre"] . "</p>";
+                            if($row["copies"] !=0){
+                            echo "<button type=\"button\" class=\"btn btn-sm btn-success text-center\"> <a class=\"nav-link\" href=\"AddtoCart.php?ISBN=$ISBN
+                            \">Add to Check Out</a></button>";
+                            }else{
+                                echo "<button type=\"button\" class=\"btn btn-sm btn-success text-center disables\">Currently Out of Stock </button>";
+                            }
+                        echo"
                         </div>
                         </div>
                         </div>

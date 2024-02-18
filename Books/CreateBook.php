@@ -12,4 +12,3 @@ if (mysqli_query($conn, $sql)) {
     echo "<script type=\"text/javascript\"> alert(\"The book has been added!\"); </script>";
     header("refresh:0.2; url=AdminBook.php");
 }
-

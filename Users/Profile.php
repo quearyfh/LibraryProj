@@ -14,7 +14,7 @@
 </head>
 
 <body class="text-bg-light">
-    <div class="well bg-dark text-white text-center">ADMIN ACCESS</div>
+    <div class="well bg-dark text-white text-center">Open from 8am - 5pm at 12345 Example St. IN</div>
     <div class="row row-eq-height">
         <div class="col-lg-1 text-center">
             <h2>This is A</h2>
@@ -76,57 +76,68 @@
 
     <div class="vr"></div>
     <div class="container-fluid content-row">
-
-        <div class="row row-eq-height">
-            <div class="col-lg-4 vh-100">
-                <div class="card">
-                    <div class="card-header bg-success">
-                        <h5 class="card-title text-center text-white">Options</h5>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center "> <a class="nav-link" href="AdminUsers.php">View
-                                Users</a> </li>
-                        <li class="list-group-item text-center "> <a class="nav-link" href="AddUser.php">Add
-                                User</a></li>
-                    </ul>
+    <div class="row row-eq-height">
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header bg-success">
+                    <h5 class="card-title text-center text-white">Your Current Information</h5>
                 </div>
-            </div>
+                <div class="card-body text-center">
+                    <?php
+                                $sql = "select * from member where ucard = $ucard";
+                                echo "
+                            <form name =\"UpdateUser\" method= \"post\" action= \"UpdateUser.php?ucard=$ucard\">
+                                <h5> Change the field you would like to update</h5><br>";
 
-            <div class="col-lg-8 vh-100">
-                <div class="card ">
-                    <div class="card-header bg-success">
-                        <h5 class="card-title text-center text-white ">Results Found</h5>
-                    </div>
-                    <div class="card-body">
-                        <?php
-                            $sql = "select * from member";
-                            $result = mysqli_query($conn, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    $ucard = $row["Ucard"];
-                                    echo "<div class=\"card mb-3\" style=\"max-width: 540px;\">";
-                                    echo "<div class=\"row g-0\">";
-                                    echo "
-                                                <div class=\"card-body\">
-                                                    <h5 class=\"card-title\">" . $row["fname"] . " " . $row["lname"] . "</h5>
-                                                    <p class=\"card-text\"><b>Ucard Number: </b>" . $row["Ucard"] . "</p>
-                                                    <p class=\"card-text\"><b>Email: </b>" . $row["email"] . "</p>
-                                                    <p class=\"card-text\"><b>Phone Number: </b>" . $row["Phone"] . "</p>
-                                                    <p class=\"card-text\"><b>Address: </b>" . $row["address"] . "</p>
-                                                    <p class=\"card-text\"><b>Admin Status: </b>" . $row["status"] . "</p>
-                                                    <button type=\"button\" class=\"btn btn-sm btn-success\"><a class=\"nav-link\" href=\"EditUser.php?ucard=$ucard\">Edit</a></button>
-                                                    <button type=\"button\" class=\"btn btn-sm btn-success\"><a class=\"nav-link\" href=\"DeleteUser.php?ucard=$ucard\">Remove</a></button>
-                                                    </div> 
-                                                </div>
-                                                </div>
-                                            ";
+                                $result = mysqli_query($conn, $sql);
+                                if (mysqli_num_rows($result) > 0) {
+                                    $row = mysqli_fetch_assoc($result);
                                 }
-                            }
-                            ?>
-                    </div>
+                                
+                                echo "
+                                <p><b>First Name:</b><br>
+                                <input type=\"text\" name=\"fname\"  minlength=\"2\" value='" . $row['fname'] . "'required onkeydown=\"return /[a-zA-Z]/i.test(event.key)\">
+                                </p>
+
+                                <p><b>Last Name:</b><br>
+                                <input type=\"text\" name=\"lname\"  minlength=\"2\" value='" . $row['lname'] . "'required  onkeydown=\"return /[a-zA-Z]/i.test(event.key)\">
+                                </p>
+
+                                <p><b>Email:</b><br>
+                                <input type=\"text\" name=\"email\"  minlength=\"2\" value='" . $row['email'] . "'required >
+                                </p>
+
+                                <p><b>Ucard Number:</b><br>
+                                <input type=\"number\" name=\"ucard\" value='" . $row['Ucard'] . "'required disabled>
+                                </p>
+
+                                <p><b>Phone:</b><br>
+                                <input type=\"text\" name=\"phone\" pattern=\"[1-0]{1}[0-9]{9}\" value='" . $row['Phone'] . "'required>
+                                </p>
+
+                                <p><b>Address:</b><br>
+                                <input type=\"text\" name=\"address\"  minlength=\"2\" value='" . $row['address'] . "'required>
+                                </p>
+
+                                <p><b>Status:</b><br>
+                                <input type=\"text\" name=\"status\" minlength=\"2\" value='" . $row['status'] . "'disabled>
+                                </p>
+                                ";
+                                ?>
+
+                        <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Change
+                        Profile</button> <br><br>
+                        <h4>No longer want to be a member? </h4>
+                        <button type="button" class="btn btn-md btn-success rounded-0 border border-dark"><a class="nav-link" href="DeleteUser.php?ucard=$ucard">Delete Account</a></button>
+                    <br>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
 
 
 

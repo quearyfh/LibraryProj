@@ -12,5 +12,3 @@ $sql = "update book set title='$title',author='$author',ISBN='$ISBN',copies='$co
 mysqli_query($conn, $sql);
 echo "<script type=\"text/javascript\"> alert(\"The book has been changed!\"); </script>";
 header("refresh:0.2; url=AdminBook.php");
-
-?>

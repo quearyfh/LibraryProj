@@ -32,7 +32,7 @@
                             $sql = "select * from member where ucard = '$ucard'";
                             $result = mysqli_query($conn, $sql);
                             $row = mysqli_fetch_assoc($result);
-                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
+                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"..\Users\Profile.php\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
                             if ($_SESSION["status"] == 'admin') {
                                 echo "<li class=\"nav-item dropdown\">
                            <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>
@@ -48,6 +48,7 @@
                     </div>
                 </div>
             </nav>
+        </div>
         </div>
         <div class="well bg-dark "> . </div>
         <div class="vr"></div>
@@ -88,9 +89,11 @@
                 </div>
 
                 <div class="col-lg-8 vh-100">
-                    <div class="card bg-success">
+                    <div class="card ">
                         <div class="card-header bg-success">
                             <h5 class="card-title text-center text-white">Results Found</h5>
+                        </div>
+                        <div class="card-body">
                             <?php
                             $sql = "select * from book";
                             $result = mysqli_query($conn, $sql);
@@ -120,7 +123,6 @@
                             }
                             ?>
                         </div>
-                        <div class="card-body">
                         </div>
                     </div>
                 </div>
