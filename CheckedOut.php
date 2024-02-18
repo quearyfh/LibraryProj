@@ -4,6 +4,8 @@ include("Connection.php");
 $ISBN = $_GET['ISBN'];
 $dateoption = $_POST['returndate'];
 $ucard = $_SESSION["ucard"];
+$status = $_SESSION["status"];
+
 if ($dateoption=="4"){
     $datereturned = time() + (28 * 24 * 60 * 60);
 }else{
@@ -14,7 +16,7 @@ $date= date('Y-m-d', $datereturned);
 
 $sql = "select ISBN from checkout where ucard='$ucard';";
 $result = mysqli_query($conn, $sql);
-if (mysqli_num_rows($result) >= 6){
+if ((mysqli_num_rows($result) >= 6 && $status='member') || (mysqli_num_rows($result) >= 12 && $status!='member')){
     echo "<script type=\"text/javascript\"> alert(\"You have reached your limit of books checked out. You must return a book before you can checkout anymore!\"); </script>";
     header("refresh:0.2; url=ReturnBook.php");
 }

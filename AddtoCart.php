@@ -3,6 +3,7 @@ session_start();
 include("Connection.php");
 $ISBN = $_GET['ISBN'];
 $ucard = $_SESSION["ucard"];
+$status = $_SESSION["status"];
 
 $sql = "select ISBN from cart where ISBN=$ISBN and ucard='$ucard';";
 $count= mysqli_query($conn, $sql);
@@ -17,7 +18,7 @@ mysqli_query($conn, $sql);
 
 $sql = "select ISBN from cart where ucard='$ucard';";
 $result = mysqli_query($conn, $sql);
-if (mysqli_num_rows($result) >= 6){
+if ((mysqli_num_rows($result) >= 6 && $status='member') || (mysqli_num_rows($result) >= 12 && $status!='member')){
     echo "<script type=\"text/javascript\"> alert(\"You have reached your limit of books have in cart. You must checkout a book before you add anymore!\"); </script>";
     header("refresh:0.2; url=Checkout.php");
 }

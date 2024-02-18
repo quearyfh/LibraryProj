@@ -93,50 +93,48 @@
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $ISBN=$row["ISBN"];
                                 echo "<div class=\"card mb-3\" style=\"max-width: 540px;\">";
-                                echo "<div class=\"row g-0\">";
-                                echo "<div class=\"col-md-4\">
-                                <img src=\".\Books\bookpic\\" . $row["img"] . "\" class=\"card-img-top\" alt=\"BookImage\">
-                                </div>
-                                <div class=\"col-md-8\">
-                                <div class=\"card-body\">
-                                    <h5 class=\"card-title\">" . $row["title"] . "</h5>
-                                    <p class=\"card-text\"><b>Author: </b>" . $row["author"] . "</p>
-                                    <p class=\"card-text\"><b>ISBN: </b>" . $ISBN . "</p>
-                                    <p class=\"card-text\"><b>Genre: </b>" . $row["genre"] . "</p>
-                                    <p class=\"card-text\"><b>Check Out For: </b>
-                                    <form method=\"POST\" action=\"CheckedOut.php?ISBN=$ISBN\">
-                                    <div class=\"form-check\">
-                                    <input class=\"form-check-input\" type=\"radio\" name=\"returndate\" value=\"1\" checked>
-                                    <label class=\"form-check-label\" for=\"flexRadioDefault1\">
-                                        1 week
-                                    </label>
+                                    echo "<div class=\"row g-0\">";
+                                        echo "<div class=\"col-md-4\">
+                                                <img src=\".\Books\bookpic\\" . $row["img"] . "\" class=\"card-img-top\" alt=\"BookImage\">
+                                               </div>
+                                                <div class=\"col-md-8\">
+                                                    <div class=\"card-body\">
+                                                        <h5 class=\"card-title\">" . $row["title"] . "</h5>
+                                                        <p class=\"card-text\"><b>Author: </b>" . $row["author"] . "</p>
+                                                        <p class=\"card-text\"><b>ISBN: </b>" . $ISBN . "</p>
+                                                        <p class=\"card-text\"><b>Genre: </b>" . $row["genre"] . "</p>
+                                                        <p class=\"card-text\"><b>Check Out For: </b>
+                                                        <form method=\"POST\" action=\"CheckedOut.php?ISBN=$ISBN\">
+                                                            <div class=\"form-check\">
+                                                                <input class=\"form-check-input\" type=\"radio\" name=\"returndate\" value=\"1\" checked>
+                                                                <label class=\"form-check-label\" for=\"flexRadioDefault1\">
+                                                                    1 week
+                                                                </label>
+                                                            </div>
+                                    
+                                                            <div class=\"form-check\">
+                                                                <input class=\"form-check-input\" type=\"radio\" name=\"returndate\" value=\"4\" >
+                                                                <label class=\"form-check-label\" for=\"flexRadioDefault2\">
+                                                                    4 weeks
+                                                                </label>
+                                                            </div>
+                                                    
+                                                            <button type=\"submit\" class=\"btn btn-sm btn-success text-center\">Confirm Checkout</button>
+                                                            <button type=\"button\" class=\"btn btn-sm btn-success text-center\"><a class=\"nav-link\" href=\"RemoveCart.php?ISBN=$ISBN\"> Remove From Cart</button>
+                                                        </form>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                        </div>
                                     </div>
-                                    
-                                    <div class=\"form-check\">
-                                    <input class=\"form-check-input\" type=\"radio\" name=\"returndate\" value=\"4\" >
-                                    <label class=\"form-check-label\" for=\"flexRadioDefault2\">
-                                        4 weeks
-                                    </label>
-                                    
-                                    </div>
-                                    </p>
-                                    <div class=\"col\">
-                                    
-                                    <button type=\"submit\" class=\"btn btn-sm btn-success text-center\">Confirm Checkout</button>
-                                    </form>
-                                    <button type=\"button\" class=\"btn btn-sm btn-success text-center\"><a class=\"nav-link\"
-                                    href=\"RemoveCart.php?ISBN=$ISBN\"> Remove From Cart</button>
-                                    </div> 
-                                </div>
-                                </div>
-                                </div>
-                                </div>
+                                
                                 ";
                             }
                         }else{
                             echo "<p class=\"card-text text-center\"> You currently have no books in your check out.</p>";
                         }
                         ?>
+                        
                     </div>
                 </div>
             </div>
