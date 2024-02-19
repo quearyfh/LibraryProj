@@ -104,11 +104,11 @@
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     $ucard = $row["Ucard"];
-                                    echo "<div class=\"card mb-3\" style=\"max-width: 540px;\">";
+                                    echo "<div class=\"card mb-3 mx-auto\" style=\"max-width: 540px;\">";
                                     echo "<div class=\"row g-0\">";
                                     echo "
                                                 <div class=\"card-body\">
-                                                    <h5 class=\"card-title\">" . $row["fname"] . " " . $row["lname"] . "</h5>
+                                                    <h4 class=\"card-title\">" . $row["fname"] . " " . $row["lname"] . "</h4>
                                                     <p class=\"card-text\"><b>Ucard Number: </b>" . $row["Ucard"] . "</p>
                                                     <p class=\"card-text\"><b>Email: </b>" . $row["email"] . "</p>
                                                     <p class=\"card-text\"><b>Phone Number: </b>" . $row["Phone"] . "</p>

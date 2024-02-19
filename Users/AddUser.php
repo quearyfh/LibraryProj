@@ -112,7 +112,7 @@
                             </p>
 
                             <p><b>Phone Number:</b><br>
-                                <input type="number" name="phone" max="9999999999"required>
+                                <input type="text" name="phone" pattern="[1-0]{1}[0-9]{9}" required>
                             </p>
 
                             <p><b>Address:</b><br>

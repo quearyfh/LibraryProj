@@ -92,14 +92,14 @@
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $ISBN=$row["ISBN"];
-                                echo "<div class=\"card mb-3\" style=\"max-width: 540px;\">
+                                echo "<div class=\"card mx-auto \" style=\"max-width: 650px;\">
                                         <div class=\"row g-0\">
                                             <div class=\"col-md-4\">
                                                 <img src=\".\Books\bookpic\\" . $row["img"] . "\" class=\"card-img-top\" alt=\"BookImage\">
                                             </div>
                                             <div class=\"col-md-8\">
-                                                <div class=\"card-body\">
-                                                    <h5 class=\"card-title\">" . $row["title"] . "</h5>
+                                                <div class=\"card-body \">
+                                                    <h4 class=\"card-title\">" . $row["title"] . "</h4>
                                                     <p class=\"card-text\"><b>Author: </b>" . $row["author"] . "</p>
                                                     <p class=\"card-text\"><b>ISBN: </b>" . $row["ISBN"] . "</p>
                                                     <p class=\"card-text\"><b>Genre: </b>" . $row["genre"] . "</p>";

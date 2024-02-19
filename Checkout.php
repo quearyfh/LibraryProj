@@ -92,14 +92,14 @@
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $ISBN=$row["ISBN"];
-                                echo "<div class=\"card mb-3\" style=\"max-width: 540px;\">";
+                                echo "<div class=\"card mx-auto \" style=\"max-width: 650px;\">";
                                     echo "<div class=\"row g-0\">";
                                         echo "<div class=\"col-md-4\">
                                                 <img src=\".\Books\bookpic\\" . $row["img"] . "\" class=\"card-img-top\" alt=\"BookImage\">
                                                </div>
                                                 <div class=\"col-md-8\">
                                                     <div class=\"card-body\">
-                                                        <h5 class=\"card-title\">" . $row["title"] . "</h5>
+                                                        <h4 class=\"card-title\">" . $row["title"] . "</h4>
                                                         <p class=\"card-text\"><b>Author: </b>" . $row["author"] . "</p>
                                                         <p class=\"card-text\"><b>ISBN: </b>" . $ISBN . "</p>
                                                         <p class=\"card-text\"><b>Genre: </b>" . $row["genre"] . "</p>
@@ -119,8 +119,8 @@
                                                                 </label>
                                                             </div>
                                                     
-                                                            <button type=\"submit\" class=\"btn btn-sm btn-success text-center\">Confirm Checkout</button>
-                                                            <button type=\"button\" class=\"btn btn-sm btn-success text-center\"><a class=\"nav-link\" href=\"RemoveCart.php?ISBN=$ISBN\"> Remove From Cart</button>
+                                                            <button type=\"submit\" class=\"btn btn-md btn-success text-center\">Confirm Checkout</button>
+                                                            <button type=\"button\" class=\"btn btn-md btn-success text-center\"><a class=\"nav-link\" href=\"RemoveCart.php?ISBN=$ISBN\"> Remove From Cart</a></button>
                                                         </form>
                                                         </p>
                                                     </div>

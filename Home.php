@@ -108,13 +108,13 @@
             <div class="col-lg-6 vh-100">
                 <div class="card">
                     <div class="card-header bg-success">
-                        <h5 class="card-title text-center text-white">Recently Returned NEED TO FIX</h5>
+                        <h5 class="card-title text-center text-white">Recently Returned</h5>
                     </div>
                     <div class="card-body">
                         <div class="row row-eq-height">
                             <div class="col-md-4 vh-25">
                                 <?php
-                                $sql = "select * from book order by copies desc;";
+                                $sql = "select * from book order by LastUpdated desc ;";
                                 $ctr = 0;
                                 $result = mysqli_query($conn, $sql);
                                 if (mysqli_num_rows($result) > 0) {
