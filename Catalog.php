@@ -16,11 +16,11 @@
 <body class="text-bg-light">
     <div class="well bg-dark text-white text-center">Open from 8am - 5pm at 12345 Example St. IN</div>
     <div class="row row-eq-height">
-        <div class="col-lg-1 text-center">
-            <h2>This is A</h2>
+        <div class="col-lg-1 fw-bold text-center">
+            <h3>This<br> is A</h3>
         </div>
-        <div class="col-lg-3 text-left text-success">
-            <h1>Library</h1>
+        <div class="col-lg-3 text-right text-success fw-bolder fst-italic ">
+            <p class="fs-1">Library</p>
         </div>
         <div class="col-lg-4 ms-auto text-end">
             <nav class="navbar navbar-expand-lg">
@@ -50,25 +50,24 @@
             </nav>
         </div>
     </div>
-    <div class="well bg-dark "> . </div>
-    <div class="vr"></div>
+    <hr>
     <div class="row">
         <div class="col-sm-2"></div>
 
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+            <button type="button" class="btn btn-lg btn-success "><a class="nav-link"
                     href="Home.php">Home</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+            <button type="button" class="btn btn-lg btn-success "><a class="nav-link"
                     href="Catalog.php">Catalog</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+            <button type="button" class="btn btn-lg btn-success "><a class="nav-link"
                     href="Checkout.php">Check Out</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
+            <button type="button" class="btn btn-lg btn-success "><a class="nav-link"
                     href="ReturnBook.php">Return Books</a></button>
         </div>
         <div class="col-sm-2"></div>
