@@ -140,7 +140,7 @@
                             ";
                             ?>
 
-                        <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Change
+                        <button type="submit" class="btn btn-md btn-success>Change
                             User</button>
                         <br>
                         </form>

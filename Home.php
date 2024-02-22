@@ -118,7 +118,7 @@
                         <div class="row row-eq-height">
                             <div class="col-md-4 vh-25">
                                 <?php
-                                $sql = "select * from book where copies > 1 order by LastUpdated desc ;";
+                                $sql = "select * from book where copies > 1 order by LastUpdated DESC ;";
                                 $ctr = 0;
                                 $result = mysqli_query($conn, $sql);
                                 if (mysqli_num_rows($result) > 0) {

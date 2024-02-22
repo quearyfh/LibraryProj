@@ -12,7 +12,7 @@ if (mysqli_num_rows($result) > 0) {
     if ($row["status"] != 'User') {
         $_SESSION["status"] = 'admin';
     } else {
-        $_SESSION["status"] = 'member';
+        $_SESSION["status"] = 'User';
     }
     $_SESSION["ucard"] = $ucard;
     header("refresh:0.2; url=..\mail.php");

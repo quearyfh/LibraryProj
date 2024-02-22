@@ -88,14 +88,14 @@
                     <?php
                                 $sql = "select * from member where ucard = $ucard";
                                 echo "
-                            <form name =\"UpdateUser\" method= \"post\" action= \"UpdateUser.php?ucard=$ucard\">
+                            <form name =\"UpdateUser\" method= \"post\" action= \"UpdateProfile.php?ucard=$ucard\">
                                 <h5> Change the field you would like to update</h5><br>";
 
                                 $result = mysqli_query($conn, $sql);
                                 if (mysqli_num_rows($result) > 0) {
                                     $row = mysqli_fetch_assoc($result);
                                 }
-                                
+                                $ucard=$row['Ucard'];
                                 echo "
                                 <p><b>First Name:</b><br>
                                 <input type=\"text\" name=\"fname\"  minlength=\"2\" value='" . $row['fname'] . "'required onkeydown=\"return /[a-zA-Z]/i.test(event.key)\">
@@ -130,7 +130,9 @@
                         <button type="submit" class="btn btn-md btn-success">Change
                         Profile</button> <br><br>
                         <h4>No longer want to be a member? </h4>
-                        <button type="button" class="btn btn-md btn-success "><a class="nav-link" href="DeleteUser.php?ucard=$ucard">Delete Account</a></button>
+                        <?php
+                        echo "<button type=\"button\" class=\"btn btn-md btn-success \"><a class=\"nav-link\" href=\"DeleteProfile.php?ucard=$ucard\">Delete Account</a></button>";
+                        ?>
                     <br>
                     </form>
                 </div>
