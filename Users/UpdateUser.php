@@ -1,5 +1,6 @@
 <?php
 include("..\Connection.php");
+require('..\ValidAdmin.php');
 $OGucard = $_GET['ucard'];
 $fname = $_POST["fname"];
 $lname = $_POST["lname"];

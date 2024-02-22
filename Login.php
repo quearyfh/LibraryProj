@@ -16,13 +16,11 @@
 <body class="text-bg-light">
     <div class="well bg-dark text-white text-center">Open from 8am - 5pm at 12345 Example St. IN</div>
     <div class="row row-eq-height">
-        <div class="col-lg-1 text-center">
-            <h2>This is A</h2>
+        <div class="col-lg-1 fw-bold text-center">
+            <h3>This<br> is A</h3>
         </div>
-        <div class="col-lg-3 text-left text-success">
-            <h1>Library</h1>
-        </div>
-        <div class="col-lg-3 ms-auto text-end">
+        <div class="col-lg-3 text-right text-success fw-bolder fst-italic ">
+            <p class="fs-1">Library</p>
         </div>
     </div>
     <div class="well bg-dark "> . </div>
@@ -49,7 +47,7 @@
                             </p>
 
                             <button type="submit"
-                                class="btn btn-md btn-success rounded-0 border border-dark">Login</button>
+                                class="btn btn-md btn-success">Login</button>
                             <br>
                             <p>Don't have an account?<a class="nav-link" href="SignUp.php">Click Here to Sign Up</a></p>
                         </form>

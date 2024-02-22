@@ -1,10 +1,10 @@
 <?php 
     // Authorization
     // Check whether the user is logged in or not
-    if(!isset($_SESSION['user'])){
+    if(!isset($_SESSION['status'])){
         // User is not logged in
         // Redirect to login page with message
-        $_SESSION['no-login-message'] = "<div class='error'>Please login </div>";
+        echo "<script type=\"text/javascript\"> alert(\"You MUST Login first!\"); </script>";
         // Redirect to Login Page
-        header("refresh:0.2; url=Login.php");
+        header("Location:Login.php");
     }

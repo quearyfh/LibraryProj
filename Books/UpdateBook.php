@@ -1,5 +1,6 @@
 <?php
 include("..\Connection.php"); // connects to database
+require('..\ValidAdmin.php');
 $OGISBN = $_GET['ISBN']; // gets the original isbn from the url in case it is changes
 $title = $_POST["title"]; // the posted field values from the form
 $author = $_POST["author"];

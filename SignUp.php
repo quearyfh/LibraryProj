@@ -10,17 +10,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <title>Library</title>
     <?php session_start();
-    require('Connection.php'); ?>
+    require('Connection.php'); 
+?>
 </head>
 
 <body class="text-bg-light">
     <div class="well bg-dark text-white text-center">Open from 8am - 5pm at 12345 Example St. IN</div>
     <div class="row row-eq-height">
-        <div class="col-lg-1 text-center">
-            <h2>This is A</h2>
+        <div class="col-lg-1 fw-bold text-center">
+            <h3>This<br> is A</h3>
         </div>
-        <div class="col-lg-3 text-left text-success">
-            <h1>Library</h1>
+        <div class="col-lg-3 text-right text-success fw-bolder fst-italic ">
+            <p class="fs-1">Library</p>
         </div>
         <div class="col-lg-3 ms-auto text-end">
         </div>
@@ -39,23 +40,23 @@
                     </div>
                     <div class="card-body text-center">
                         <form name="CreateUser" method="post" action=".\Users\createUser.php">
-                            <p>First name:<br>
+                            <p><b>First name:</b><br>
                                 <input type="text" name="fname" required minlength="2" onkeydown="return /[a-zA-Z]/i.test(event.key)">
                             </p>
 
-                            <p>Last name:<br>
+                            <p><b>Last name:</b><br>
                                 <input type="text" name="lname" required minlength="2" onkeydown="return /[a-zA-Z]/i.test(event.key)">
                             </p>
 
-                            <p>Email:<br>
+                            <p><b>Email:</b><br>
                                 <input type="text" name="email" required minlength="8" onkeydown="return /[a-zA-Z0-9@]/i.test(event.key)">
                             </p>
 
-                            <p>Phone Number:<br>
+                            <p><b>Phone Number:</b><br>
                                 <input type="text" name="phone" pattern="[1-0]{1}[0-9]{9}" required>
                             </p>
 
-                            <p>Address:<br>
+                            <p><b>Address:</b><br>
                                 <input type="text" name="address" minlength="2" required onkeydown="return /[a-zA-Z0-9]/i.test(event.key)">
                             </p>
 

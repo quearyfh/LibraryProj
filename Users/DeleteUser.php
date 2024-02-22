@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("..\Connection.php");
+require('..\ValidAdmin.php');
 $ucard = $_GET['ucard'];
 
 $sql = "delete from member where ucard = '$ucard';";

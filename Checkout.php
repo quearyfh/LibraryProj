@@ -10,7 +10,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <title>Library</title>
     <?php session_start();
-    require('Connection.php'); ?>
+    require('Connection.php');
+    require('ValidUser.php'); ?>
 </head>
 
 <body class="text-bg-light">
@@ -43,7 +44,7 @@
                                 </li> ";
                             }
                             ?>
-                            <li class="nav-item"><a class="nav-link" href="Login.php">Log Out</a></li>
+                            <li class="nav-item"><a class="nav-link" href="Logout.php">Log Out</a></li>
                         </ul>
                     </div>
                 </div>
