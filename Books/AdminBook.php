@@ -1,3 +1,4 @@
+<!-- html page for Admins to view book options -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,60 +50,65 @@
                 </div>
             </nav>
         </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-2"></div>
+
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success "><a class="nav-link"
+                    href="..\Home.php">Home</a></button>
         </div>
-        <hr>
-        <div class="row">
-            <div class="col-sm-2"></div>
-
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success "><a class="nav-link" href="..\Home.php">Home</a></button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success "><a class="nav-link" href="..\Catalog.php">Catalog</a></button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success "><a class="nav-link" href="..\Checkout.php">Check Out</a></button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-lg btn-success "><a class="nav-link" href="..\ReturnBook.php">Return Books</a></button>
-            </div>
-            <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success "><a class="nav-link"
+                    href="..\Catalog.php">Catalog</a></button>
         </div>
-
-        <div class="vr"></div>
-        <div class="container-fluid content-row">
-
-            <div class="row row-eq-height">
-                <div class="col-lg-4 vh-100">
-                    <div class="card">
-                        <div class="card-header bg-success">
-                            <h5 class="card-title text-center text-white">Options</h5>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item text-center "> <a class="nav-link" href="AdminBook.php">View
-                                    Books</a> </li>
-                            <li class="list-group-item text-center "> <a class="nav-link" href="AddBook.php">Add
-                                    Book</a></li>
-                        </ul>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success "><a class="nav-link" href="..\Checkout.php">Check
+                    Out</a></button>
+        </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-lg btn-success "><a class="nav-link" href="..\ReturnBook.php">Return
+                    Books</a></button>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+    <!-- ^^ above code is explained on the Home.php file, it is the same for every page -->
+    <div class="vr"></div>
+    <div class="container-fluid content-row">
+        <div class="row row-eq-height">
+            <div class="col-lg-4 vh-100">
+                <div class="card">
+                    <div class="card-header bg-success">
+                        <h5 class="card-title text-center text-white">Options</h5> <!-- card containing book options -->
                     </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-center "> <a class="nav-link" href="AdminBook.php">View
+                                Books</a> </li>
+                        <!-- clickable link to other book options-->
+                        <li class="list-group-item text-center "> <a class="nav-link" href="AddBook.php">Add
+                                Book</a></li>
+                    </ul>
                 </div>
+            </div>
 
-                <div class="col-lg-8 vh-100">
-                    <div class="card ">
-                        <div class="card-header bg-success">
-                            <h5 class="card-title text-center text-white">Results Found</h5>
-                        </div>
-                        <div class="card-body">
-                            <?php
-                            $sql = "select * from book";
+            <div class="col-lg-8 vh-100">
+                <div class="card ">
+                    <div class="card-header bg-success">
+                        <h5 class="card-title text-center text-white">Results Found</h5>
+                        <!-- card that encompassers book results-->
+                    </div>
+                    <div class="card-body">
+                        <?php
+                            $sql = "select * from book"; // will select all the books from my table 
                             $result = mysqli_query($conn, $sql);
-                            if (mysqli_num_rows($result) > 0) {
+                            if (mysqli_num_rows($result) > 0) { // if there are books 
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     $ISBN = $row["ISBN"];
                                     echo "<div class=\"card mb-3 mx-auto\" style=\"max-width: 650px;\">";
                                     echo "<div class=\"row g-0\">";
                                     echo "<div class=\"col-md-4\">
-                                                <img src=\".\bookpic\\" . $row["img"] . "\" class=\"card-img-top\" alt=\"BookImage\">
+                                                <img src=\".\bookpic\\" . $row["img"] . "\" class=\"card-img-top\" alt=\"BookImage\"> 
                                                 </div>
                                                 <div class=\"col-md-8\">
                                                 <div class=\"card-body\">
@@ -118,14 +124,16 @@
                                             </div>
                                             </div>
                                             ";
+                                            // This echo contains my card body which has html written in it. The .row are the variables being printed from my table
+                                            // there are twoi buttons that will take you to other .php files
                                 }
                             }
                             ?>
-                        </div>
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
 
 

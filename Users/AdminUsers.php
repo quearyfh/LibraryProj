@@ -63,30 +63,31 @@
                     href="..\Catalog.php">Catalog</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success "><a class="nav-link"
-                    href="..\Checkout.php">Check Out</a></button>
+            <button type="button" class="btn btn-lg btn-success "><a class="nav-link" href="..\Checkout.php">Check
+                    Out</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success"><a class="nav-link"
-                    href="..\ReturnBook.php">Return Books</a></button>
+            <button type="button" class="btn btn-lg btn-success"><a class="nav-link" href="..\ReturnBook.php">Return
+                    Books</a></button>
         </div>
         <div class="col-sm-2"></div>
     </div>
-
+    <!-- ^^ above code is explained on the Home.php file, it is the same for every page -->
     <div class="vr"></div>
     <div class="container-fluid content-row">
-
         <div class="row row-eq-height">
             <div class="col-lg-4 vh-100">
                 <div class="card">
                     <div class="card-header bg-success">
                         <h5 class="card-title text-center text-white">Options</h5>
+                        <!-- card contains admin user options -->
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item text-center "> <a class="nav-link" href="AdminUsers.php">View
                                 Users</a> </li>
                         <li class="list-group-item text-center "> <a class="nav-link" href="AddUser.php">Add
                                 User</a></li>
+                        <!-- link to other things admin can user  -->
                     </ul>
                 </div>
             </div>
@@ -94,14 +95,14 @@
             <div class="col-lg-8 vh-100">
                 <div class="card ">
                     <div class="card-header bg-success">
-                        <h5 class="card-title text-center text-white ">Results Found</h5>
+                        <h5 class="card-title text-center text-white ">Current Users</h5>
                     </div>
                     <div class="card-body">
                         <?php
-                            $sql = "select * from member";
+                            $sql = "select * from member"; // will select all members from database
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_assoc($result)) {
+                                while ($row = mysqli_fetch_assoc($result)) { // while there are memebers in database
                                     $ucard = $row["Ucard"];
                                     echo "<div class=\"card mb-3 mx-auto\" style=\"max-width: 540px;\">";
                                     echo "<div class=\"row g-0\">";
@@ -119,6 +120,8 @@
                                                 </div>
                                                 </div>
                                             ";
+                                            // this echo will display user information within the card body
+                                            // there are also two butons which allow the admin to delete or edit the user
                                 }
                             }
                             ?>

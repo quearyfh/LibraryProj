@@ -1,3 +1,4 @@
+<!-- Html page for admin's to edit books -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,24 +64,23 @@
                     href="..\Catalog.php">Catalog</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success "><a class="nav-link"
-                    href="..\Checkout.php">Check Out</a></button>
+            <button type="button" class="btn btn-lg btn-success "><a class="nav-link" href="..\Checkout.php">Check
+                    Out</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success "><a class="nav-link"
-                    href="..\ReturnBook.php">Return Books</a></button>
+            <button type="button" class="btn btn-lg btn-success "><a class="nav-link" href="..\ReturnBook.php">Return
+                    Books</a></button>
         </div>
         <div class="col-sm-2"></div>
     </div>
-
+    <!-- ^^ above code is explained on the Home.php file, it is the same for every page -->
     <div class="vr"></div>
     <div class="container-fluid content-row">
-
         <div class="row row-eq-height">
             <div class="col-lg-4 vh-100">
                 <div class="card">
                     <div class="card-header bg-success">
-                        <h5 class="card-title text-center text-white">Options</h5>
+                        <h5 class="card-title text-center text-white">Options</h5> <!-- card that shows book options-->
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item text-center "> <a class="nav-link" href="AdminBook.php">View
@@ -94,17 +94,18 @@
             <div class="col-lg-8 vh-100">
                 <div class="card">
                     <div class="card-header bg-success">
-                        <h5 class="card-title text-center text-white">Results Found</h5>
+                        <h5 class="card-title text-center text-white">Edit Book Information</h5>
+                        <!-- card that encompasses book form -->
                     </div>
                     <div class="card-body text-center">
                         <?php
                             $ISBN = $_GET['ISBN'];
-                            $sql = "select * from book where ISBN = $ISBN";
+                            $sql = "select * from book where ISBN = $ISBN"; // selects the book based on ISBN
                             echo "
                         <form name =\"UpdateBook\" method= \"post\" action= \"UpdateBook.php?ISBN=$ISBN\">
                             <h5> Change the field you would like to update</h5><br>
                             ";
-                            $sql = "select * from book where ISBN = $ISBN";
+                            // ^^ creates a form that will go to UpdateBook.php when submitted
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 $row = mysqli_fetch_assoc($result);
@@ -136,13 +137,12 @@
 
                             
                             ";
+                            // the above echo is a form that has required inputs for book information
+                            // the inputs are already filled in with the current information, the user must change the field they want updated
                             ?>
-                        <!-- <p>Image File:<br>
-                             <input type=\"file\" id=\"myFile\" name=\"imgfile\">
-                            </p> -->
 
                         <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Change
-                            Book</button>
+                            Book</button> <!-- the submit button to update form-->
                         <br>
                         </form>
                     </div>

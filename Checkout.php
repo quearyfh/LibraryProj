@@ -73,7 +73,7 @@
     </div>
     <div class="vr"></div>
 
-
+    <!-- ^^ above code is explained on the Home.php file, it is the same for every page -->
     <div class="container-fluid content-row">
         <div class="row row-eq-height">
             <div class="col-lg-2">

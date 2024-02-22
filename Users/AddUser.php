@@ -1,3 +1,4 @@
+<!--html page for admin to add users -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,28 +64,29 @@
                     href="..\Catalog.php">Catalog</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success "><a class="nav-link"
-                    href="..\Checkout.php">Check Out</a></button>
+            <button type="button" class="btn btn-lg btn-success "><a class="nav-link" href="..\Checkout.php">Check
+                    Out</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success "><a class="nav-link"
-                    href="..\ReturnBook.php">Return Books</a></button>
+            <button type="button" class="btn btn-lg btn-success "><a class="nav-link" href="..\ReturnBook.php">Return
+                    Books</a></button>
         </div>
         <div class="col-sm-2"></div>
     </div>
-
+    <!-- ^^ above code is explained on the Home.php file, it is the same for every page -->
     <div class="vr"></div>
     <div class="container-fluid content-row">
-
         <div class="row row-eq-height">
             <div class="col-lg-4 vh-100">
                 <div class="card">
                     <div class="card-header bg-success">
                         <h5 class="card-title text-center text-white">Options</h5>
+                        <!-- card that contain admin user options-->
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item text-center "> <a class="nav-link" href="AdminUsers.php">View
                                 Users</a> </li>
+                        <!-- links to other admin activities -->
                         <li class="list-group-item text-center "> <a class="nav-link" href="AddUser.php">Add
                                 User</a></li>
                     </ul>
@@ -94,16 +96,20 @@
             <div class="col-lg-8 vh-100">
                 <div class="card">
                     <div class="card-header bg-success">
-                        <h5 class="card-title text-center text-white">Results Found</h5>
+                        <h5 class="card-title text-center text-white">Add User's information</h5>
+                        <!-- card that contains form for user-->
                     </div>
                     <div class="card-body text-center">
                         <form name="CreateUser" method="post" action="createUser.php">
+                            <!-- form submits to createuser.php-->
                             <p><b>First name:</b><br>
                                 <input type="text" name="fname" required onkeydown="return /[a-zA-Z]/i.test(event.key)">
                             </p>
 
                             <p><b>Last name:</b><br>
-                                <input type="text" name="lname" required required onkeydown="return /[a-zA-Z]/i.test(event.key)">
+                                <input type="text" name="lname" required required
+                                    onkeydown="return /[a-zA-Z]/i.test(event.key)">
+                                <!--  only allows user to enter letters-->
                             </p>
 
                             <p><b>Email:</b><br>
@@ -111,15 +117,17 @@
                             </p>
 
                             <p><b>Phone Number:</b><br>
-                                <input type="text" name="phone" pattern="[1-0]{1}[0-9]{9}" required>
+                                <input type="text" name="phone" pattern="[1-9]{1}[0-9]{9}" required>
+                                <!-- the pattern ensures users enter a digit 1-9 first and then the rest of the phone digits -->
                             </p>
 
                             <p><b>Address:</b><br>
                                 <input type="text" name="address" required>
+                                <!--required- ensures users do not leave space as null -->
                             </p>
 
                             <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Add
-                                User</button>
+                                User</button> <!--  when clicked the createUser.php file will run-->
                             <br>
                     </div>
                 </div>

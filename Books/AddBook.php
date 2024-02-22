@@ -1,3 +1,4 @@
+<!-- HTML page to add book -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,28 +63,28 @@
                     href="..\Catalog.php">Catalog</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success "><a class="nav-link"
-                    href="..\Checkout.php">Check Out</a></button>
+            <button type="button" class="btn btn-lg btn-success "><a class="nav-link" href="..\Checkout.php">Check
+                    Out</a></button>
         </div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success "><a class="nav-link"
-                    href="..\ReturnBook.php">Return Books</a></button>
+            <button type="button" class="btn btn-lg btn-success "><a class="nav-link" href="..\ReturnBook.php">Return
+                    Books</a></button>
         </div>
         <div class="col-sm-2"></div>
     </div>
-    <!-- <div class="well bg-light " > .   </div> -->
+    <!-- ^^ above code is explained on the Home.php file, it is the same for every page -->
     <div class="vr"></div>
     <div class="container-fluid content-row">
-
         <div class="row row-eq-height">
+            <!-- makes all my rows the same height-->
             <div class="col-lg-4 vh-100">
                 <div class="card">
                     <div class="card-header bg-success">
-                        <h5 class="card-title text-center text-white">Options</h5>
+                        <h5 class="card-title text-center text-white">Options</h5> <!-- card shows my book options -->
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item text-center "> <a class="nav-link" href="AdminBook.php">View
-                                Books</a> </li>
+                                Books</a> </li> <!-- clickable links to that take you to other pages -->
                         <li class="list-group-item text-center "> <a class="nav-link" href="AddBook.php">Add Book</a>
                         </li>
                     </ul>
@@ -93,20 +94,25 @@
             <div class="col-lg-8 vh-100">
                 <div class="card">
                     <div class="card-header bg-success">
-                        <h5 class="card-title text-center text-white">Results Found</h5>
+                        <h5 class="card-title text-center text-white">Add Book Information</h5>
+                        <!-- card encompasses my form-->
                     </div>
                     <div class="card-body text-center">
                         <form name="CreateBook" method="post" action="createBook.php">
                             <p><b>Title:</b><br>
                                 <input type="text" name="title" minlength="2" required>
+                                <!-- makes input required to not be null -->
                             </p>
 
                             <p><b>Author:</b><br>
-                                <input type="text" name="author"  minlength="2" required  onkeydown="return /[a-zA-Z]/i.test(event.key)">
+                                <input type="text" name="author" minlength="2" required
+                                    onkeydown="return /[a-zA-Z]/i.test(event.key)">
+                                <!-- ^^ the onkeydown makes sure they only enter letters-->
                             </p>
 
                             <p><b>ISBN:</b><br>
                                 <input type="text" name="ISBN" pattern="[0-9]{13}" required>
+                                <!-- will only accept numbers as an input-->
                             </p>
 
                             <p><b>Copies:</b><br>
@@ -114,19 +120,16 @@
                             </p>
 
                             <p><b>Genre:</b><br>
-                                <input type="text" name="genre"  minlength="2" required onkeydown="return /[a-zA-Z]/i.test(event.key)">
+                                <input type="text" name="genre" minlength="2" required
+                                    onkeydown="return /[a-zA-Z]/i.test(event.key)">
                             </p>
 
                             <p><b>Image Name:</b><br>
                                 <input type="text" name="img" minlength="2" required>
                             </p>
 
-                            <!-- <p>Image File:<br>
-                            <input type="file" id="myFile" name="imgfile">
-                            </p> -->
-
-                            <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Submit
-                                Book</button>
+                            <button type="submit" class="btn btn-md btn-success">Submit
+                                Book</button> <!-- the submit form button -->
                             <br>
                         </form>
                     </div>
@@ -134,9 +137,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
 </body>
