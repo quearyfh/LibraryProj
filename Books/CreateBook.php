@@ -1,5 +1,6 @@
 <?php 
 // the php file for adding a book to my sql tabkes
+session_start();
 include("..\Connection.php"); // connects to my database
 $title = $_POST["title"]; // gettings all the posted values from my post form in AddBook.php
 $author = $_POST["author"];

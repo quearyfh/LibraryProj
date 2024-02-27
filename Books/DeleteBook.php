@@ -1,7 +1,8 @@
 <?php
 // the php file that deletes books from my sql database
 include("..\Connection.php"); // connects to database
-require('..\ValidAdmin.php');
+session_start();
+require('..\ValidAdmin.php'); // makes sure they are an admin
 $ISBN = $_GET['ISBN']; // gets the ISBN from the url
 
 $sql = "delete from book where ISBN = '$ISBN';"; // deletes book from database based on ISBN

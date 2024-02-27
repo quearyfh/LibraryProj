@@ -1,7 +1,3 @@
-<?php session_start();
-    require('Connection.php'); 
-    require('ValidUser.php');
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,91 +8,35 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <title>Library</title>
-
+    <!--^^ need for bootstrap commands-->
+    <title>Library Home</title> <!--title-->
+    <?php session_start(); // starts session to track variables
+    require('Connection.php');  // connects to database
+    require('ValidUser.php'); // ensures they are logged in 
+    include("Header.php"); // makes my header go first
+    ?>
 </head>
 
-<body class="text-bg-light">
-    <div class="well text-center bg-dark text-white">Open from 8am - 5pm at 12345 Example St. IN</div>
-    <div class="row row-eq-height ">
-        <div class="col-lg-1 fw-bold text-center">
-            <h3>This<br> is A</h3>
-        </div>
-        <div class="col-lg-3 text-right text-success fw-bolder fst-italic ">
-            <p class="fs-1">Library</p>
-        </div>
-        <div class="col-lg-4 ms-auto text-end">
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                        <ul class="navbar-nav">
-                            <?php
-                            $ucard = $_SESSION["ucard"];
-                            $sql = "select * from member where ucard = '$ucard'";
-                            $result = mysqli_query($conn, $sql);
-                            $row = mysqli_fetch_assoc($result);
-                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\".\Users\Profile.php\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
-                            if ($_SESSION["status"] == 'admin') {
-                                echo "<li class=\"nav-item dropdown\">
-                                <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>
-                                <ul class=\"dropdown-menu\">
-                                    <li><a class=\"dropdown-item\" href=\".\Books\AdminBook.php\">Book Access</a></li>
-                                    <li><a class=\"dropdown-item\" href=\".\Users\AdminUsers.php\">User Access</a></li>
-                                </ul>
-                                </li> ";
-                            }
-                            ?>
-                            <li class="nav-item"><a class="nav-link" href="Logout.php">Log Out</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-    <hr>
-    
-    <div class="row">
-        <div class="col-sm-2"></div>
-
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success "><a class="nav-link"
-                    href="Home.php">Home</a></button>
-        </div>
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success "><a class="nav-link"
-                    href="Catalog.php">Catalog</a></button>
-        </div>
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success "><a class="nav-link"
-                    href="Checkout.php">Check Out</a></button>
-        </div>
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success"><a class="nav-link"
-                    href="ReturnBook.php">Return Books</a></button>
-        </div>
-        <div class="col-sm-2"></div>
-    </div>
-    <div class="vr"></div>
-    <div class="container-fluid content-row">
+<body class="text-bg-light"> <!--makes background light gray-->
+    <div class="container-fluid content-row"> <!-- makes sure my rows stay the same length-->
         <div class="row row-eq-height">
-            <div class="col-lg-6 vh-100">
+            <div class="col-lg-6 vh-100"><!--makes the column half the page-->
                 <div class="card">
                     <div class="card-header bg-success">
-                        <h5 class="card-title text-center text-white">Newly Added</h5>
+                        <h5 class="card-title text-center text-white">Newly Added</h5> <!-- card will show books recently added-->
                     </div>
-                    <div class="card-body">
+                    <div class="card-body"><!--contains the main information on my card-->
                         <div class="row row-eq-height">
                             <div class="col-md-4 vh-25">
                                 <?php
-                                $sql = "select * from book where copies >0 order by DateAdded desc";
+                                $sql = "select * from book where copies >0 order by DateAdded desc"; // selects the books with the newest date added
                                 $ctr = 0;
                                 $result = mysqli_query($conn, $sql);
                                 if (mysqli_num_rows($result) > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) {
-                                        if ($ctr < 3) {
+                                        if ($ctr < 3) { // only displays 3 new books
                                             $pic = $row["img"];
-                                            echo "<img src=\".\Books\bookpic\\" . $row["img"] . "\" class=\"card-img-top\" alt=\"BookImage\">";
+                                            echo "<img src=\".\Books\bookpic\\" . $row["img"] . "\" class=\"card-img-top\" alt=\"BookImage\">"; //displays the book image
                                             echo "</div>";
                                             echo "<div class=\"col-md-4 vh-25\">";
                                             $ctr++;
@@ -109,23 +49,23 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 vh-100">
+            <div class="col-lg-6 vh-100"><!-- makes the column half of the page-->
                 <div class="card">
                     <div class="card-header bg-success">
-                        <h5 class="card-title text-center text-white">Recently Returned</h5>
+                        <h5 class="card-title text-center text-white">Recently Returned</h5> <!--card that will display the books recently returned-->
                     </div>
                     <div class="card-body">
                         <div class="row row-eq-height">
-                            <div class="col-md-4 vh-25">
+                            <div class="col-md-4 vh-25"><!-- keeps the rows and columns the same size-->
                                 <?php
-                                $sql = "select * from book where copies > 1 order by LastUpdated DESC ;";
+                                $sql = "select * from book where copies > 0 order by LastUpdated DESC ;"; // will show books that aren't checked out and have been recently returned
                                 $ctr = 0;
                                 $result = mysqli_query($conn, $sql);
                                 if (mysqli_num_rows($result) > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) {
-                                        if ($ctr < 3) {
+                                        if ($ctr < 3) { // ensures only 3 books are displayed
                                             $pic = $row["img"];
-                                            echo "<img src=\".\Books\bookpic\\" . $row["img"] . "\" class=\"card-img-top\" alt=\"BookImage\">";
+                                            echo "<img src=\".\Books\bookpic\\" . $row["img"] . "\" class=\"card-img-top\" alt=\"BookImage\">";//shows the books image
                                             echo "</div>";
                                             echo "<div class=\"col-md-4 vh-25\">";
                                             $ctr++;
