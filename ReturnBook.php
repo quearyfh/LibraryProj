@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--This file is my return books page-->
 <html lang="en">
 
 <head>
@@ -8,122 +9,67 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Library</title>
+    <title>Library Return</title> <!--appears at top of window-->
     <?php session_start();
-    require('Connection.php'); ?>
+    require('Connection.php'); // requires connection to database
+    require('ValidUser.php'); // checks if valid user
+    include("Header.php");// provides my header?>
 </head>
 
-<body class="text-bg-light">
-    <div class="well bg-dark text-white text-center">Open from 8am - 5pm at 12345 Example St. IN</div>
-    <div class="row row-eq-height">
-        <div class="col-lg-1 text-center">
-            <h2>This is A</h2>
-        </div>
-        <div class="col-lg-3 text-left text-success">
-            <h1>Library</h1>
-        </div>
-        <div class="col-lg-4 ms-auto text-end">
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                        <ul class="navbar-nav">
-                            <?php
-                            $ucard = $_SESSION["ucard"];
-                            $sql = "select * from member where ucard = '$ucard'";
-                            $result = mysqli_query($conn, $sql);
-                            $row = mysqli_fetch_assoc($result);
-                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\".\Users\Profile.php\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
-                            if ($_SESSION["status"] == 'admin') {
-                                echo "<li class=\"nav-item dropdown\">
-                                <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>
-                                <ul class=\"dropdown-menu\">
-                                    <li><a class=\"dropdown-item\" href=\".\Books\AdminBook.php\">Book Access</a></li>
-                                    <li><a class=\"dropdown-item\" href=\".\Users\AdminUsers.php\">User Access</a></li>
-                                </ul>
-                                </li> ";
-                            }
-                            ?>
-                            <li class="nav-item"><a class="nav-link" href="Login.php">Log Out</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-    <div class="well bg-dark "> . </div>
-    <div class="vr"></div>
-    <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
-                    href="Home.php">Home</a></button>
-        </div>
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
-                    href="Catalog.php">Catalog</a></button>
-        </div>
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
-                    href="Checkout.php">Check Out</a></button>
-        </div>
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
-                    href="ReturnBook.php">Return Books</a></button>
-        </div>
-        <div class="col-sm-2"></div>
-    </div>
-    <div class="vr"></div>
-
-
+<body class="text-bg-light"><!--background is light grey-->
     <div class="container-fluid content-row">
-        <div class="row row-eq-height">
-            <div class="col-lg-2">
+        <div class="row row-eq-height"><!--makes rows same height-->
+            <div class="col-lg-2"><!--spacer column-->
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-8"><!--main column-->
                 <div class="card">
                     <div class="card-header bg-success">
-                        <h5 class="card-title text-center text-white">Books to Return</h5>
+                        <h5 class="card-title text-center text-white">Books to Return</h5> <!--card contains all the books needing to be return-->
                     </div>
-                    <div class="card-body">
+                    <div class="card-body"> <!--the information for the card goes in here-->
                         <?php
-                        $ucard = $_SESSION["ucard"];
-                        $sql = "select * from book where ISBN IN(select ISBN from checkout where ucard=$ucard);";
+                        $ucard = $_SESSION["ucard"]; // getting my ucard number from my session
+                        $sql = "select * from book where ISBN IN(select ISBN from checkout where ucard=$ucard);"; 
+                        // ^^ will select everything about each book that the current user has checked out
                         $result = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($result) > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $ISBN=$row["ISBN"];
-                                echo "<div class=\"card mb-3\" style=\"max-width: 540px;\">
+                            while ($row = mysqli_fetch_assoc($result)) { // while there are books that the user checked out
+                                $ISBN=$row["ISBN"]; // stealing for my later URL
+                                echo "<div class=\"card mx-auto \" style=\"max-width: 650px;\"> 
                                         <div class=\"row g-0\">
                                             <div class=\"col-md-4\">
                                                 <img src=\".\Books\bookpic\\" . $row["img"] . "\" class=\"card-img-top\" alt=\"BookImage\">
                                             </div>
                                             <div class=\"col-md-8\">
-                                                <div class=\"card-body\">
-                                                    <h5 class=\"card-title\">" . $row["title"] . "</h5>
+                                                <div class=\"card-body \">
+                                                    <h4 class=\"card-title\">" . $row["title"] . "</h4>
                                                     <p class=\"card-text\"><b>Author: </b>" . $row["author"] . "</p>
                                                     <p class=\"card-text\"><b>ISBN: </b>" . $row["ISBN"] . "</p>
                                                     <p class=\"card-text\"><b>Genre: </b>" . $row["genre"] . "</p>";
-                            
-                            $sql2 = "select * from checkout where ISBN=$ISBN";
+                            // the above echo creates a card with the book information and picture
+                            $sql2 = "select * from checkout where ISBN=$ISBN"; // selects checkout information about the current book 
                             $result2 = mysqli_query($conn, $sql2);
                             if (mysqli_num_rows($result2) > 0) {
                                 while ($row2 = mysqli_fetch_assoc($result2)) {
                                         echo "
                                                     <p class=\"card-text\"><b>Date Checked Out: </b>" . $row2["DateCheck"] . "</p>
-                                                    <p class=\"card-text\"><b>Date to Return : </b>" . $row2["DateReturn"] . "</p>
+                                                    <p class=\"card-text\"><b>Date to Return: </b>" . $row2["DateReturn"] . "</p>
                                                     <button type=\"button\" class=\"btn btn-sm btn-success text-center\"> <a class=\"nav-link\" href=\"ActualReturn.php?ISBN=$ISBN
                                                     \">Return </a></button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <br>
                                     
                                     ";
+                                    //^^ the above echo displays the date checked out and the date needed to return and the return book which will return books 
                                 }
                             }
                         }
                         }else{
-                            echo "<p class=\"card-text text-center\"> You currently have no books to return.</p>";
+                            echo "<p class=\"card-text text-center\"> You currently have no books to return.</p>";// will display if the user has no checked out any books
+
                         }
                         ?>
                     </div>

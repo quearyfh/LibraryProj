@@ -10,100 +10,41 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <title>Library</title>
     <?php session_start();
-    require('..\Connection.php'); ?>
+    require('..\Connection.php'); // connects to database
+    require('..\ValidUser.php'); // makes sure they are logged in
+    require('..\ValidAdmin.php'); // makes sure they are an admin
+    include("..\AdminHeader.php"); // header for admin?>
 </head>
 
-<body class="text-bg-light">
-    <div class="well bg-dark text-white text-center">ADMIN ACCESS</div>
-    <div class="row row-eq-height">
-        <div class="col-lg-1 text-center">
-            <h2>This is A</h2>
-        </div>
-        <div class="col-lg-3 text-left text-success">
-            <h1>Library</h1>
-        </div>
-        <div class="col-lg-4 ms-auto text-end">
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                        <ul class="navbar-nav">
-                            <?php
-                            $ucard = $_SESSION["ucard"];
-                            $sql = "select * from member where ucard = '$ucard'";
-                            $result = mysqli_query($conn, $sql);
-                            $row = mysqli_fetch_assoc($result);
-                            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"Profile.php\"><b>" . $row["fname"] . " " . $row["lname"] . "</b></a></li>";
-                            if ($_SESSION["status"] == 'admin') {
-                                echo "<li class=\"nav-item dropdown\">
-                           <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\">Admin Pages</a>
-                           <ul class=\"dropdown-menu\">
-                               <li><a class=\"dropdown-item\" href=\"..\Books\AdminBook.php\">Book Access</a></li>
-                               <li><a class=\"dropdown-item\" href=\"AdminUsers.php\">User Access</a></li>
-                           </ul>
-                           </li> ";
-                            }
-                            ?>
-                            <li class="nav-item"><a class="nav-link" href="..\Login.php">Log Out</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-    <div class="well bg-dark "> . </div>
-    <div class="vr"></div>
-    <div class="row">
-        <div class="col-sm-2"></div>
-
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
-                    href="..\Home.php">Home</a></button>
-        </div>
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
-                    href="..\Catalog.php">Catalog</a></button>
-        </div>
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
-                    href="..\Checkout.php">Check Out</a></button>
-        </div>
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-lg btn-success rounded-0 border border-dark"><a class="nav-link"
-                    href="..\ReturnBook.php">Return Books</a></button>
-        </div>
-        <div class="col-sm-2"></div>
-    </div>
-
-    <div class="vr"></div>
+<body class="text-bg-light"><!-- makes background grey-->
     <div class="container-fluid content-row">
-
         <div class="row row-eq-height">
-            <div class="col-lg-4 vh-100">
+            <div class="col-lg-4 vh-100"><!--column on the side-->
                 <div class="card">
                     <div class="card-header bg-success text-white">
-                        <h5 class="card-title text-center">Options</h5>
+                        <h5 class="card-title text-center">Options</h5><!-- lists user options for admin-->
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item text-center "> <a class="nav-link" href="AdminUsers.php">View
-                                Users</a> </li>
+                                Users</a> </li><!--clickable links to pick option-->
                         <li class="list-group-item text-center "> <a class="nav-link" href="AddUser.php">Add
                                 Users</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="col-lg-8 vh-100">
+            <div class="col-lg-8 vh-100"><!-- the main column-->
                 <div class="card">
                     <div class="card-header bg-success">
-                        <h5 class="card-title text-center text-white">Results Found</h5>
+                        <h5 class="card-title text-center text-white">Results Found</h5><!-- shows all the user's info on one card-->
                     </div>
-                    <div class="card-body text-center">
+                    <div class="card-body text-center"><!-- centers text-->
                         <?php
-                            $ucard = $_GET['ucard'];
+                            $ucard = $_GET['ucard']; // gets the ucard from the URL
                             $sql = "select * from member where ucard = $ucard";
                             echo "
-                        <form name =\"UpdateUser\" method= \"post\" action= \"UpdateUser.php?ucard=$ucard\">
-                            <h5> Change the field you would like to update</h5><br>";
+                        <form name =\"UpdateUser\" method= \"post\" action= \"UpdateUser.php?ucard=$ucard\"> 
+                            <h5> Change the field you would like to update</h5><br>"; // a form that auto updates the user
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 $row = mysqli_fetch_assoc($result);
@@ -126,7 +67,7 @@
                             </p>
 
                             <p><b>Phone:</b><br>
-                            <input type=\"text\" name=\"phone\" pattern=\"[1-0]{1}[0-9]{9}\" required>
+                            <input type=\"text\" name=\"phone\" pattern=\"[1-0]{1}[0-9]{9}\" value='" . $row['Phone'] . "' required>
                             </p>
 
                             <p><b>Address:</b><br>
@@ -137,10 +78,11 @@
                             <input type=\"text\" name=\"status\" value='" . $row['status'] . "'required>
                             </p>
                             ";
+                            // the above echo shows all the user's current information within a form with data validation on the inputs
                             ?>
 
-                        <button type="submit" class="btn btn-md btn-success rounded-0 border border-dark">Change
-                            User</button>
+                        <button type="submit" class="btn btn-md btn-success">Change
+                            User</button> <!--will update user when submitted-->
                         <br>
                         </form>
                     </div>
